@@ -8,3 +8,9 @@
 //report
 //search particular month data
 //line chart and table along
+
+const Dashboard = () => {
+    return (  );
+}
+ 
+export default Dashboard;

@@ -11,3 +11,9 @@
 //extra meals this month
 //Bar chart meals per day
 //All meals this month till including others as well
+
+const UserDashboard = () => {
+    return (  );
+}
+ 
+export default UserDashboard;
