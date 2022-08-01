@@ -1,7 +1,7 @@
 //Menu CRUD Table
 
 const MenuTable = () => {
-    return (  );
-}
- 
+  return <div>Dashboard</div>;
+};
+
 export default MenuTable;

@@ -1,0 +1,51 @@
+.boxLogin {
+  width: 100%;
+  height: auto;
+  border: 3px solid #1d3557;
+  margin-top: 5vh;
+  border-radius: 10px;
+  background-color: #002b7a;
+  color: aliceblue;
+  text-align: left;
+}
+
+.boxLogin .formLogin {
+  width: 95%;
+  margin: 15% 2.5% 0% 2.5%;
+  color: aliceblue;
+}
+
+.profileLogo {
+  width: 100px;
+  height: 100px;
+  display: block;
+  margin: 0 auto;
+}
+
+.btnLogin {
+  width: 80%;
+  margin: 0 10% 0% 10%;
+}
+
+.btnLogin:hover {
+  background-color: white;
+  color: black;
+}
+
+.fgLogin {
+  margin-bottom: 20px;
+}
+
+/* mediA query*/
+@media (min-width: 768px) {
+  .boxLogin {
+    width: 40%;
+    margin-left: 30vw;
+  }
+
+  .boxLogin .formLogin {
+    width: 70%;
+    margin: 10% 15% 0% 15%;
+    color: aliceblue;
+  }
+}

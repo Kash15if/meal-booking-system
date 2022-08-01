@@ -1,6 +1,6 @@
 //CRUD Table
 const UserTable = () => {
-    return (  );
-}
- 
+  return <div>Dashboard</div>;
+};
+
 export default UserTable;

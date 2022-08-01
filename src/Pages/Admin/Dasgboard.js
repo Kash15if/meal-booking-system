@@ -10,7 +10,7 @@
 //line chart and table along
 
 const Dashboard = () => {
-    return (  );
-}
- 
+  return <div>Dashboard</div>;
+};
+
 export default Dashboard;

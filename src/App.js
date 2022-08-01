@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+//admin pages
+import AdminDashboard from "./Pages/Admin/Dasgboard";
+import AdminLogin from "./Pages/Admin/Login";
+import ManageMenu from "./Pages/Admin/Menu";
+import ManageUser from "./Pages/Admin/User";
+
+//user pages
+import UserDashboard from "./Pages/Users/Dasgboard";
+import UserLogin from "./Pages/Users/Login";
+
+//testing comps
+import BSTable from "./CustomComponents/Table/Table";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BSTable />
     </div>
   );
 }

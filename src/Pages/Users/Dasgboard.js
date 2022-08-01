@@ -13,7 +13,7 @@
 //All meals this month till including others as well
 
 const UserDashboard = () => {
-    return (  );
-}
- 
+  return <div>Dashboard</div>;
+};
+
 export default UserDashboard;
