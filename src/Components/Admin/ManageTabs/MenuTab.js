@@ -4,7 +4,12 @@ import CreateMenu from "./CreateMenuFOrm";
 
 const MenuTab = () => {
   const [tabData, setTabData] = useState();
-  const [selectedRow, setSelectedRow] = useState();
+  const [selectedRow, setSelectedRow] = useState({
+    id: "",
+    date: "",
+    time: "",
+    menu: "",
+  });
   const [tabHeader, setTabHeader] = useState();
 
   useEffect(() => {
@@ -32,22 +37,41 @@ const MenuTab = () => {
     setTabHeader(tempHeader);
   }, []);
 
-  const deleteOneRow = () => {
+  const deleteOneRow = (delRow) => {
     //delete and update using api
-    console.log(selectedRow);
-    setSelectedRow();
+    console.log(delRow);
+    let delData = tabData.filter((item) => item.id !== delRow.id);
+    setTabData(delData);
+    // setSelectedRow();
+  };
+
+  const addOrUpdateRow = (newData) => {
+    if (selectedRow.id === "") {
+      //call create api and ret data
+      console.log(newData);
+    } else {
+      //call update api and ret data
+      console.log(newData);
+    }
+  };
+
+  const handleEditRow = (editRowData) => {
+    setSelectedRow(editRowData);
   };
 
   return (
     <div>
       {tabHeader && tabData ? (
         <div>
-          <CreateMenu />
+          <CreateMenu
+            formData={selectedRow}
+            setFormData={setSelectedRow}
+            handleFormSubmit={addOrUpdateRow}
+          />
           <BsTable
             data={tabData}
             header={tabHeader}
-            selectedRow={selectedRow}
-            setSelectedRow={setSelectedRow}
+            handleEditRow={handleEditRow}
             deleteRow={deleteOneRow}
           />
         </div>

@@ -3,7 +3,7 @@ import { PencilSquare } from "react-bootstrap-icons";
 
 import { TrashFill } from "react-bootstrap-icons";
 
-const BSTable = ({ data, header, selectedRow, setSelectedRow, deleteRow }) => {
+const BSTable = ({ data, header, handleEditRow, deleteRow }) => {
   //props
   //selectedData , setSelectedData , data , header , deleteData
 
@@ -30,17 +30,15 @@ const BSTable = ({ data, header, selectedRow, setSelectedRow, deleteRow }) => {
   // let selectedRow = {};
 
   const handleEditTable = (oneRow) => {
-    // console.log(oneRow);
+    console.log(oneRow);
 
-    setSelectedRow(oneRow);
+    handleEditRow(oneRow);
     //setData(data)
   };
 
   const handleDeleteTable = (oneRow) => {
-    // console.log(oneRow);
-
-    setSelectedRow(oneRow);
-    deleteRow();
+    // console.log(oneRow);'
+    deleteRow(oneRow);
   };
 
   return (
