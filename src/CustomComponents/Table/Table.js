@@ -3,44 +3,44 @@ import { PencilSquare } from "react-bootstrap-icons";
 
 import { TrashFill } from "react-bootstrap-icons";
 
-const BSTable = () => {
+const BSTable = ({ data, header, selectedRow, setSelectedRow, deleteRow }) => {
   //props
   //selectedData , setSelectedData , data , header , deleteData
 
   //header
-  const header = ["id", "name", "ph"];
-  const data = [
-    {
-      id: 1,
-      name: "Kashif",
-      ph: "90909001",
-    },
-    {
-      id: 2,
-      name: "Faraz",
-      ph: "90909001",
-    },
-    {
-      id: 3,
-      name: "Rayan",
-      ph: "90909001",
-    },
-  ];
+  // const header = ["id", "name", "ph"];
+  // const data = [
+  //   {
+  //     id: 1,
+  //     name: "Kashif",
+  //     ph: "90909001",
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Faraz",
+  //     ph: "90909001",
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Rayan",
+  //     ph: "90909001",
+  //   },
+  // ];
 
-  let selectedRow = {};
+  // let selectedRow = {};
 
   const handleEditTable = (oneRow) => {
-    console.log(oneRow);
+    // console.log(oneRow);
 
-    //setSelectedRow(oneRow)
+    setSelectedRow(oneRow);
     //setData(data)
   };
 
   const handleDeleteTable = (oneRow) => {
-    console.log(oneRow);
+    // console.log(oneRow);
 
-    //setSelectedRow(oneRow)
-    //setData(data)
+    setSelectedRow(oneRow);
+    deleteRow();
   };
 
   return (
@@ -58,10 +58,10 @@ const BSTable = () => {
         </thead>
         <tbody>
           {data.map((oneRow, index) => (
-            <tr>
+            <tr key={index}>
               <td>{index}</td>
               {header.map((item) => (
-                <td>{oneRow[item]}</td>
+                <td key={index + item}>{oneRow[item]}</td>
               ))}
               <td>
                 <PencilSquare

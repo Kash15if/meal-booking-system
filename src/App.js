@@ -14,11 +14,12 @@ import UserLogin from "./Pages/Users/Login";
 
 //testing comps
 import BSTable from "./CustomComponents/Table/Table";
+import MenuTab from "./Components/Admin/ManageTabs/MenuTab";
 
 function App() {
   return (
     <div className="App">
-      <BSTable />
+      <MenuTab />
     </div>
   );
 }
