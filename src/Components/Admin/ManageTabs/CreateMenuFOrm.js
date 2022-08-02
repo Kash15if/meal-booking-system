@@ -12,6 +12,7 @@ const CreateMenu = ({ formData, setFormData, handleFormSubmit }) => {
     setFormData({ ...formData, [name]: value });
   };
 
+  console.log(formData);
   return (
     <div className="col-md-4 col-sm-12 container p-5 bg-light border rounded-3 text-left">
       <div className="mb-3">

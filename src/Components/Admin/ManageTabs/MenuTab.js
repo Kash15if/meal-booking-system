@@ -10,24 +10,25 @@ const MenuTab = () => {
     time: "",
     menu: "",
   });
+
   const [tabHeader, setTabHeader] = useState();
 
   useEffect(() => {
     let tempData = [
       {
-        id: 1,
-        name: "Kashif",
-        ph: "90909001",
+        date: "2022-07-01",
+        time: "Lunch",
+        menu: "sfd ijjvi ijij jsafas joj0 0sfcas",
       },
       {
-        id: 2,
-        name: "Faraz",
-        ph: "90909001",
+        date: "2022-07-02",
+        time: "Lunch",
+        menu: "sfd ijjvi ijij jsafas joj0 0sfcas",
       },
       {
-        id: 3,
-        name: "Rayan",
-        ph: "90909001",
+        date: "2022-07-03",
+        time: "Lunch",
+        menu: "sfd ijjvi ijij jsafas joj0 0sfcas",
       },
     ];
 
@@ -56,7 +57,9 @@ const MenuTab = () => {
   };
 
   const handleEditRow = (editRowData) => {
+    // console.log(editRowData);
     setSelectedRow(editRowData);
+    // console.log(selectedRow);
   };
 
   return (

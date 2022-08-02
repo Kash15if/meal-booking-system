@@ -30,7 +30,7 @@ const BSTable = ({ data, header, handleEditRow, deleteRow }) => {
   // let selectedRow = {};
 
   const handleEditTable = (oneRow) => {
-    console.log(oneRow);
+    // console.log(oneRow);
 
     handleEditRow(oneRow);
     //setData(data)
