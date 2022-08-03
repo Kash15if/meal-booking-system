@@ -15,11 +15,14 @@ import UserLogin from "./Pages/Users/Login";
 //testing comps
 import BSTable from "./CustomComponents/Table/Table";
 import MenuTab from "./Components/Admin/ManageTabs/MenuTab";
+import NumberCards from "./CustomComponents/Cards/NumberCards";
+import MealBooking from "./Components/User/MealBooking";
+import Dashboard from "./Pages/Admin/Dasgboard";
 
 function App() {
   return (
     <div className="App">
-      <MenuTab />
+      <Dashboard />
     </div>
   );
 }
