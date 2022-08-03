@@ -18,11 +18,12 @@ import MenuTab from "./Components/Admin/ManageTabs/MenuTab";
 import NumberCards from "./CustomComponents/Cards/NumberCards";
 import MealBooking from "./Components/User/MealBooking";
 import Dashboard from "./Pages/Admin/Dasgboard";
+import BarChart from "./CustomComponents/Charts/BarChart";
 
 function App() {
   return (
     <div className="App">
-      <Dashboard />
+      <BarChart />
     </div>
   );
 }
