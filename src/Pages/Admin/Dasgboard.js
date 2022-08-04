@@ -14,6 +14,8 @@ import DashboarComp from "./../../Components/Admin/Dashboard/DashoardComp";
 import MenuTab from "../../Components/Admin/ManageTabs/MenuTab";
 import UserTable from "../../Components/Admin/ManageTabs/UserTable";
 
+import "./AdminPage.css";
+
 const Dashboard = () => {
   const [page, setPage] = useState(1);
   return (
@@ -24,17 +26,26 @@ const Dashboard = () => {
         <div className="col-lg-6 offset-lg-3 col-sm-12">
           <div className="row">
             <div className="col">
-              <button className="btn btn-success" onClick={() => setPage(1)}>
+              <button
+                className="btn btn-success btn-fullWidth"
+                onClick={() => setPage(1)}
+              >
                 Dashboard
               </button>
             </div>
             <div className="col">
-              <button className="btn btn-success" onClick={() => setPage(2)}>
+              <button
+                className="btn btn-success btn-fullWidth"
+                onClick={() => setPage(2)}
+              >
                 Menu
               </button>
             </div>
             <div className="col">
-              <button className="btn btn-success" onClick={() => setPage(3)}>
+              <button
+                className="btn btn-success btn-fullWidth"
+                onClick={() => setPage(3)}
+              >
                 User
               </button>
             </div>
