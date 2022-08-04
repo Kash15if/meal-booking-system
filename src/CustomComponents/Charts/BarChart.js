@@ -28,7 +28,7 @@ const BarChart = () => {
       },
       title: {
         display: true,
-        text: "Chart.js Bar Chart",
+        text: "Daily Total Meal Booked",
       },
     },
     scales: {

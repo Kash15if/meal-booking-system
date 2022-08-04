@@ -33,7 +33,7 @@ const MealBooking = () => {
                 type="number"
                 id="quantity"
                 name="quantity"
-                min="1"
+                min="0"
                 max="5"
               />
             </td>

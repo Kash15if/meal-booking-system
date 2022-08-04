@@ -7,7 +7,7 @@ import FilterableTable from "../../../CustomComponents/Table/FilterableTable";
 const DadhboarComp = () => {
   return (
     <div className="Dashboard">
-      <div className="container">
+      <div className="container my-5">
         <div className="row p-2">
           <div className="col-lg-6 col-sm-12">
             <Card label={"Total Meal"} value={180} />
@@ -30,7 +30,7 @@ const DadhboarComp = () => {
 
       {/* Action buttons */}
 
-      <div class="container mt-2">
+      <div class="container my-5">
         <div class="row p-2">
           <div class="col-lg-4 col-sm-12  ">
             <button class="btn btn-success downloadBtn">
@@ -52,33 +52,37 @@ const DadhboarComp = () => {
       {/* Action button Ends */}
 
       {/* Barchart This month  Data */}
-
-      <BarChart />
+      <div className="my-5">
+        {" "}
+        <BarChart />
+      </div>
 
       {/* BarCharts end */}
 
       {/* Todays Meal -> Filterable table */}
-      <FilterableTable
-        tabData={[
-          {
-            id: 1,
-            name: "Kashif",
-            ph: "90909001",
-          },
-          {
-            id: 2,
-            name: "Faraz",
-            ph: "90909002",
-          },
-          {
-            id: 3,
-            name: "Rayan",
-            ph: "90909001",
-          },
-        ]}
-        header={["id", "name", "ph"]}
-        filterableColumn={["name", "ph"]}
-      />
+      <div className="my-5">
+        <FilterableTable
+          tabData={[
+            {
+              id: 1,
+              name: "Kashif",
+              ph: "90909001",
+            },
+            {
+              id: 2,
+              name: "Faraz",
+              ph: "90909002",
+            },
+            {
+              id: 3,
+              name: "Rayan",
+              ph: "90909001",
+            },
+          ]}
+          header={["id", "name", "ph"]}
+          filterableColumn={["name", "ph"]}
+        />
+      </div>
       {/* Todays Meal Ends */}
     </div>
   );

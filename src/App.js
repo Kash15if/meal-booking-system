@@ -24,7 +24,7 @@ import FilterableTable from "./CustomComponents/Table/FilterableTable";
 function App() {
   return (
     <div className="App">
-      <Dashboard />
+      <UserDashboard />
     </div>
   );
 }
