@@ -31,6 +31,20 @@ const BarChart = () => {
         text: "Chart.js Bar Chart",
       },
     },
+    scales: {
+      x: {
+        grid: {
+          display: false,
+        },
+      },
+
+      y: {
+        grid: {
+          display: false,
+          // color: "rgba(217,143,7,0.1)",
+        },
+      },
+    },
   };
 
   const labels = ["January", "February", "March", "April"];
@@ -41,12 +55,7 @@ const BarChart = () => {
       {
         label: "Dataset 1",
         data: [12, 14, 56, 24],
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
-      },
-      {
-        label: "Dataset 2",
-        data: [15, 9, 36, 14],
-        backgroundColor: "rgba(53, 162, 235, 0.5)",
+        backgroundColor: "#097969",
       },
     ],
   };
