@@ -1,6 +1,8 @@
 import "./DashboardComp.css";
 
 import Card from "./../../../CustomComponents/Cards/NumberCards";
+import BarChart from "../../../CustomComponents/Charts/BarChart";
+import FilterableTable from "../../../CustomComponents/Table/FilterableTable";
 
 const DadhboarComp = () => {
   return (
@@ -48,6 +50,36 @@ const DadhboarComp = () => {
         </div>
       </div>
       {/* Action button Ends */}
+
+      {/* Barchart This month  Data */}
+
+      <BarChart />
+
+      {/* BarCharts end */}
+
+      {/* Todays Meal -> Filterable table */}
+      <FilterableTable
+        tabData={[
+          {
+            id: 1,
+            name: "Kashif",
+            ph: "90909001",
+          },
+          {
+            id: 2,
+            name: "Faraz",
+            ph: "90909002",
+          },
+          {
+            id: 3,
+            name: "Rayan",
+            ph: "90909001",
+          },
+        ]}
+        header={["id", "name", "ph"]}
+        filterableColumn={["name", "ph"]}
+      />
+      {/* Todays Meal Ends */}
     </div>
   );
 };

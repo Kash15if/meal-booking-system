@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { ArrowLeftShort } from "react-bootstrap-icons";
 import Table from "react-bootstrap/Table";
 
 const TableWithFilter = ({ tabData, header, filterableColumn }) => {
@@ -17,7 +16,7 @@ const TableWithFilter = ({ tabData, header, filterableColumn }) => {
     });
 
     setData(filteredData);
-  }, [filterText]);
+  }, [filterText, filterableColumn, tabData]);
   //header
   // const filterableColumn = ["name", "ph"];
   //   const header = ["id", "name", "ph"];

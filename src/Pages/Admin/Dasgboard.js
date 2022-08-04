@@ -12,7 +12,7 @@
 import { useState } from "react";
 import DashboarComp from "./../../Components/Admin/Dashboard/DashoardComp";
 import MenuTab from "../../Components/Admin/ManageTabs/MenuTab";
-import UserTable from "./User";
+import UserTable from "../../Components/Admin/ManageTabs/UserTable";
 
 const Dashboard = () => {
   const [page, setPage] = useState(1);

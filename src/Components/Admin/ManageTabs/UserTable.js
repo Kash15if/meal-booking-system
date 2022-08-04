@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import BsTable from "../../../CustomComponents/Table/Table";
 import CreateMenu from "./MenuForm";
 
-const MenuTab = () => {
+const UserTab = () => {
   const [tabData, setTabData] = useState();
   const [selectedRow, setSelectedRow] = useState({
     id: "",
@@ -85,4 +85,4 @@ const MenuTab = () => {
   );
 };
 
-export default MenuTab;
+export default UserTab;
