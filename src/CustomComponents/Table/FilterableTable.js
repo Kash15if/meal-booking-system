@@ -1,123 +1,92 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { ArrowLeftShort } from "react-bootstrap-icons";
 import Table from "react-bootstrap/Table";
 
-const TableWithFilter = () => {
+const TableWithFilter = ({ tabData, header, filterableColumn }) => {
   //props
   //selectedData , setSelectedData , data , header , deleteData
 
-  //   test vars
-  const [header, setHeader] = useState(["id", "name", "ph"]);
-  const [data, setData] = useState([
-    {
-      id: 1,
-      name: "Kashif",
-      ph: "90909001",
-    },
-    {
-      id: 2,
-      name: "Faraz",
-      ph: "90909001",
-    },
-    {
-      id: 3,
-      name: "Rayan",
-      ph: "90909001",
-    },
-  ]);
+  const [data, setData] = useState();
   const [filterText, setFilterText] = useState("");
+
+  useEffect(() => {
+    let filteredData = tabData.filter((itemRow) => {
+      return filterableColumn.some((colName, index) =>
+        itemRow[colName].includes(filterText)
+      );
+    });
+
+    setData(filteredData);
+  }, [filterText]);
   //header
-  const filterableColumn = ["name", "ph"];
+  // const filterableColumn = ["name", "ph"];
   //   const header = ["id", "name", "ph"];
-  //   const data = [
-  //     {
-  //       id: 1,
-  //       name: "Kashif",
-  //       ph: "90909001",
-  //     },
-  //     {
-  //       id: 2,
-  //       name: "Faraz",
-  //       ph: "90909001",
-  //     },
-  //     {
-  //       id: 3,
-  //       name: "Rayan",
-  //       ph: "90909001",
-  //     },
-  //   ];
+  // const data = [
+  //   {
+  //     id: 1,
+  //     name: "Kashif",
+  //     ph: "90909001",
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Faraz",
+  //     ph: "90909001",
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Rayan",
+  //     ph: "90909001",
+  //   },
+  // ];
 
   //   let filterText = "";
 
   // let selectedRow = {};
 
-  const handleFilter = (oneRow) => {
-    let filteredData = data.filter((itemRow) => {
-      let res = true;
-      filterableColumn.forEach((colName) => {
-        let cellData = data[colName];
-        if (!cellData.contains(filterText)) {
-          res = false;
-        }
-      });
-
-      return res;
-    });
-
-    setData(filteredData);
-    // console.log(oneRow);
-    // handleEditRow(oneRow);
-    //setData(data)
+  const handleFilterChange = (e) => {
+    var { value } = e.target;
+    setFilterText(value);
   };
 
   return (
-    <div>
-      <div>
-        <label className="form-label">Date</label>
-        <input
-          type="date"
-          className="form-control"
-          id="date"
-          aria-describedby="emailHelp"
-          value={formData.date}
-          name="date"
-          onChange={handleInput}
-        />
+    <div className="p-3">
+      <div className="row my-5">
+        <div className="col-md-4 col-lg-3 col-sm-12 offset-md-8 offset-lg-9">
+          <input
+            type="text"
+            className="form-control"
+            id="filter-text"
+            placeholder="Search"
+            aria-describedby="Filter-text"
+            value={filterText}
+            name="date"
+            onChange={handleFilterChange}
+          />
+        </div>
       </div>
 
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>#</th>
-            {header.map((item) => (
-              <th>{item}</th>
-            ))}
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((oneRow, index) => (
-            <tr key={index}>
-              <td>{index}</td>
+      {tabData && data && (
+        <Table bordered hover>
+          <thead>
+            <tr>
+              <th>#</th>
               {header.map((item) => (
-                <td key={index + item}>{oneRow[item]}</td>
+                <th>{item}</th>
               ))}
-              <td>
-                <PencilSquare
-                  color="royalblue"
-                  onClick={() => handleEditTable(oneRow)}
-                />
-              </td>
-              <td>
-                <TrashFill
-                  color="red"
-                  onClick={() => handleDeleteTable(oneRow)}
-                />
-              </td>
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {data.map((oneRow, index) => (
+              <tr key={index}>
+                <td>{index}</td>
+                {header.map((item) => (
+                  <td key={index + item}>{oneRow[item]}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      )}
     </div>
   );
 };
