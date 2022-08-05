@@ -22,7 +22,7 @@ import Dashboard from "./Pages/Admin/Dasgboard";
 import BarChart from "./CustomComponents/Charts/BarChart";
 import FilterableTable from "./CustomComponents/Table/FilterableTable";
 import MyMeals from "./Components/User/YouMeals";
-import NavBar from "./CustomComponents/NavBar/NavBar";
+import NavBar from "./Components/Admin/Navbar";
 
 function App() {
   return (
@@ -45,7 +45,10 @@ function App() {
           <Route path="/user/bookmeal" element={<MealBooking />} />
           <Route path="/user/allmeals" element={<MyMeals />} />
 
-          <Route path="/user/create-conflicts" element={<NavBar />} />
+          <Route
+            path="/user/create-conflicts"
+            element={<NavBar menu={[{ compRoute: "/", compLabel: "Login" }]} />}
+          />
         </Routes>
       </BrowserRouter>
     </div>
