@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import BsTable from "../../../CustomComponents/Table/Table";
-import CreateMenu from "./MenuForm";
+import CreateUser from "./UserForm";
 
 const UserTab = () => {
   const [tabData, setTabData] = useState();
@@ -66,7 +66,7 @@ const UserTab = () => {
     <div>
       {tabHeader && tabData ? (
         <div>
-          <CreateMenu
+          <CreateUser
             formData={selectedRow}
             setFormData={setSelectedRow}
             handleFormSubmit={addOrUpdateRow}

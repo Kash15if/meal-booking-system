@@ -1,7 +1,11 @@
 //Menu CRUD Table
-
-const MenuTable = () => {
-  return <div>Dashboard</div>;
+import MenuTab from "../../Components/Admin/ManageTabs/MenuTab";
+const ManageMenu = () => {
+  return (
+    <div>
+      <MenuTab />
+    </div>
+  );
 };
 
-export default MenuTable;
+export default ManageMenu;
