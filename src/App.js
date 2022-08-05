@@ -22,6 +22,7 @@ import Dashboard from "./Pages/Admin/Dasgboard";
 import BarChart from "./CustomComponents/Charts/BarChart";
 import FilterableTable from "./CustomComponents/Table/FilterableTable";
 import MyMeals from "./Components/User/YouMeals";
+import NavBar from "./CustomComponents/NavBar/NavBar";
 
 function App() {
   return (
@@ -44,7 +45,7 @@ function App() {
           <Route path="/user/bookmeal" element={<MealBooking />} />
           <Route path="/user/allmeals" element={<MyMeals />} />
 
-          <Route path="/user/create-conflicts" element={<Dashboard />} />
+          <Route path="/user/create-conflicts" element={<NavBar />} />
         </Routes>
       </BrowserRouter>
     </div>
