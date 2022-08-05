@@ -48,7 +48,8 @@ const TableWithFilter = ({ tabData, header, filterableColumn }) => {
   };
 
   return (
-    <div className="p-3">
+    <div className="p-3" style={{ backgroundColor: "#D6F4DE" }}>
+      <h4 style={{ textAlign: "center", marginTop: "2rem" }}>My Meals</h4>
       <div className="row my-3">
         <div className="col-md-4 col-lg-3 col-sm-12 offset-md-8 offset-lg-9">
           <input

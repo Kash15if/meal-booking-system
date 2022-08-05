@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 import LoginForm from "../../Components/Others/LoginForm";
 
 const LogIn = () => {
-  return <LoginForm />;
+  return <LoginForm header="Admin Login" />;
 };
 
 export default LogIn;

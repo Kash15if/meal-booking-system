@@ -5,8 +5,11 @@ import "./MealBooking.css";
 
 const MealBooking = () => {
   return (
-    <div className="jumbotron jumbotron-fluid" style={{ overflowX: "scroll" }}>
-      <div className="container">
+    <div className="jumbotron jumbotron-fluid">
+      <h4 style={{ textAlign: "center", margin: "2rem 0 4rem 0" }}>
+        My Next 7 days booking
+      </h4>
+      <div className="container" style={{ overflowX: "scroll" }}>
         <table style={{ width: "70%", margin: "auto" }}>
           <tr>
             <th>Date</th>

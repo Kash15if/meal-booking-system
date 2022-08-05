@@ -3,7 +3,7 @@ import NavBar from "../../CustomComponents/NavBar/NavBar";
 
 const AdminNav = () => {
   const [menu, setMenu] = useState([
-    { compRoute: "/login", compLabel: "Login" },
+    { compRoute: "/admin/login", compLabel: "Login" },
     { compRoute: "/admin/dashboard", compLabel: "Dashboard" },
     { compRoute: "/admin/users", compLabel: "Manage Users" },
     { compRoute: "/admin/menus", compLabel: "Manage Menu" },

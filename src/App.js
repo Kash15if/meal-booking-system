@@ -33,7 +33,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        {usrType === "client" ? <AdminNav /> : <ClientNav />}
+        {usrType === "admin" ? <AdminNav /> : <ClientNav />}
         <Routes>
           {/* Admin Routes */}
           <Route path="/admin/login" element={<AdminLogin />} />

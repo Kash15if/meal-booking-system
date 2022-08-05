@@ -3,7 +3,7 @@ import LoginForm from "../../Components/Others/LoginForm";
 const userLogin = () => {
   return (
     <div>
-      <LoginForm />;
+      <LoginForm header="Admin Login" />;
     </div>
   );
 };

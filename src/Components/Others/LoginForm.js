@@ -4,9 +4,10 @@ import Form from "react-bootstrap/Form";
 import "./LoginForm.css";
 import LogoImg from "../../images/login.svg";
 
-const LoginForm = () => {
+const LoginForm = ({ header }) => {
   return (
     <div className="boxLogin container">
+      <h4 style={{ textAlign: "center", marginTop: "1rem" }}>{header}</h4>
       <form className="formLogin">
         <img src={LogoImg} alt="" class="profileLogo" />
 

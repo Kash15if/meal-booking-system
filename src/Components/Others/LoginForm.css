@@ -1,10 +1,11 @@
 .boxLogin {
   width: 100%;
   height: auto;
-  border: 3px solid #1d3557;
+  border: 3px solid #198754;
   margin-top: 5vh;
   border-radius: 10px;
-  background-color: #002b7a;
+  /* background-color: #002b7a; */
+  background-color: #198754;
   color: aliceblue;
   text-align: left;
 }
@@ -25,6 +26,7 @@
 .btnLogin {
   width: 80%;
   margin: 0 10% 0% 10%;
+  background-color: #002b7a;
 }
 
 .btnLogin:hover {
