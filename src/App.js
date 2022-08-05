@@ -1,4 +1,5 @@
-import logo from "./logo.svg";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -20,11 +21,32 @@ import MealBooking from "./Components/User/MealBooking";
 import Dashboard from "./Pages/Admin/Dasgboard";
 import BarChart from "./CustomComponents/Charts/BarChart";
 import FilterableTable from "./CustomComponents/Table/FilterableTable";
+import MyMeals from "./Components/User/YouMeals";
 
 function App() {
   return (
     <div className="App">
-      <UserDashboard />
+      <BrowserRouter>
+        <Routes>
+          {/* Admin Routes */}
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/dashboard" element={<Dashboard />} />
+
+          <Route path="/menus" element={<UserDashboard />} />
+          <Route path="/users" element={<Dashboard />} />
+
+          <Route path="/user/resolve-conflicts" element={<Dashboard />} />
+
+          {/* User Routes */}
+          <Route path="/" element={<UserLogin />} />
+          <Route path="/user/dashboard" element={<UserDashboard />} />
+
+          <Route path="/user/bookmeal" element={<MealBooking />} />
+          <Route path="/user/allmeals" element={<MyMeals />} />
+
+          <Route path="/user/create-conflicts" element={<Dashboard />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

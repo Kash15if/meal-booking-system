@@ -2,9 +2,8 @@
 // Calener
 //table -> Date , No of Meals , Charge/Meal , Menu
 
-
 const YearMeals = () => {
-    return (  );
-}
- 
+  return <div>My Meals</div>;
+};
+
 export default YearMeals;
