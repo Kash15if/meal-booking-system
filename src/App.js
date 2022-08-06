@@ -1,5 +1,6 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
+import { RequireAuth } from "./Services/AuthServices";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -24,37 +25,116 @@ import FilterableTable from "./CustomComponents/Table/FilterableTable";
 import MyMeals from "./Components/User/YouMeals";
 import AdminNav from "./Components/Admin/Navbar";
 import ClientNav from "./Components/User/NavBar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import UserTab from "./Components/Admin/ManageTabs/UserTable";
 import AllMeals from "./Pages/Admin/AllMeals";
 
 function App() {
-  const [usrType, setUserType] = useState("client");
+  const [usrType, setUserType] = useState("user");
+
+  let location = useLocation();
+
+  useEffect(() => {
+    let routeArray = location.pathname.split("/");
+
+    // console.log(routeArray[1]);
+    setUserType(routeArray[1]);
+  }, [location]);
   return (
     <div className="App">
-      <BrowserRouter>
-        {usrType === "admin" ? <AdminNav /> : <ClientNav />}
-        <Routes>
-          {/* Admin Routes */}
-          <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/admin/dashboard" element={<Dashboard />} />
+      {usrType === "admin" ? <AdminNav /> : <ClientNav />}
+      <Routes>
+        {/* Admin Routes */}
 
-          <Route path="/admin/menus" element={<MenuTab />} />
-          <Route path="/admin/users" element={<UserTab />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route
+          path="/admin/dashboard"
+          element={
+            <RequireAuth userType={usrType}>
+              <Dashboard />
+            </RequireAuth>
+          }
+        />
 
-          <Route path="/admin/allmeals" element={<AllMeals />} />
-          <Route path="/admin/resolve-conflicts" element={<Dashboard />} />
+        <Route
+          path="/admin/menus"
+          element={
+            <RequireAuth userType={usrType}>
+              <MenuTab />
+            </RequireAuth>
+          }
+        />
 
-          {/* User Routes */}
-          <Route path="/" element={<UserLogin />} />
-          <Route path="/user/dashboard" element={<UserDashboard />} />
+        <Route
+          path="/admin/users"
+          element={
+            <RequireAuth userType={usrType}>
+              <ManageUser />
+            </RequireAuth>
+          }
+        />
 
-          <Route path="/user/bookmeal" element={<MealBooking />} />
-          <Route path="/user/allmeals" element={<MyMeals />} />
+        <Route
+          path="/admin/allmeals"
+          element={
+            <RequireAuth userType={usrType}>
+              <AllMeals />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/admin/resolve-conflicts"
+          element={
+            <RequireAuth userType={usrType}>
+              <Dashboard />
+            </RequireAuth>
+          }
+        />
 
-          <Route path="/user/create-conflicts" element={<MealBooking />} />
-        </Routes>
-      </BrowserRouter>
+        {/* User Routes */}
+        <Route
+          path="/"
+          element={
+            <RequireAuth userType={usrType}>
+              <UserLogin />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/user/dashboard"
+          element={
+            <RequireAuth userType={usrType}>
+              <UserDashboard />
+            </RequireAuth>
+          }
+        />
+
+        <Route
+          path="/user/bookmeal"
+          element={
+            <RequireAuth userType={usrType}>
+              <MealBooking />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/user/allmeals"
+          element={
+            <RequireAuth userType={usrType}>
+              <MyMeals />
+            </RequireAuth>
+          }
+        />
+
+        <Route
+          path="/user/create-conflicts"
+          element={
+            <RequireAuth userType={usrType}>
+              <MealBooking />
+            </RequireAuth>
+          }
+        />
+      </Routes>
     </div>
   );
 }
