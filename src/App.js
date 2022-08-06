@@ -93,7 +93,7 @@ function App() {
 
         {/* User Routes */}
         <Route
-          path="/"
+          path="/user/login"
           element={
             <RequireAuth userType={usrType}>
               <UserLogin />
