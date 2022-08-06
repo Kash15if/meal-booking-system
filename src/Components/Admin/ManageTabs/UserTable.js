@@ -63,7 +63,12 @@ const UserTab = () => {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        backgroundColor: "#D6F4DE",
+        padding: "1rem",
+      }}
+    >
       {tabHeader && tabData ? (
         <div>
           <CreateUser

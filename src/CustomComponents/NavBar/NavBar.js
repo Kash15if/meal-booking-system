@@ -14,7 +14,7 @@ const NavBar = ({ menu }) => {
   };
 
   return (
-    <nav class="navbar navbar-expand-lg navbar-dark bg-success px-3 py-1">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-success px-3 py-1">
       <button
         class="navbar-toggler"
         type="button"

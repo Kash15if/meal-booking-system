@@ -42,8 +42,16 @@ const BSTable = ({ data, header, handleEditRow, deleteRow }) => {
   };
 
   return (
-    <div>
-      <Table striped bordered hover>
+    <div
+      style={{
+        backgroundColor: "#D6F4DE",
+        borderRadius: "0.5rem",
+        minWidth: "100%",
+        overflow: "auto",
+        height: "60vh",
+      }}
+    >
+      <Table bordered rounded-10 hover>
         <thead>
           <tr>
             <th>#</th>

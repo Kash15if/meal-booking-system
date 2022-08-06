@@ -14,7 +14,10 @@ const CreateMenu = ({ formData, setFormData, handleFormSubmit }) => {
 
   console.log(formData);
   return (
-    <div className="col-md-4 col-sm-12 container p-5 bg-light border rounded-3 text-left">
+    <div
+      className="col-md-4 col-sm-12 container p-5 border rounded-3 text-left my-5"
+      style={{ backgroundColor: "#D6F4DE" }}
+    >
       <div className="mb-3">
         <label className="form-label">Date</label>
         <input

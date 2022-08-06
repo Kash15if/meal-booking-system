@@ -65,7 +65,12 @@ const MenuTab = () => {
   return (
     <div>
       {tabHeader && tabData ? (
-        <div>
+        <div
+          style={{
+            backgroundColor: "#D6F4DE",
+            padding: "1rem",
+          }}
+        >
           <CreateMenu
             formData={selectedRow}
             setFormData={setSelectedRow}
