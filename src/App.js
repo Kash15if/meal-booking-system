@@ -66,6 +66,15 @@ function App() {
         />
 
         <Route
+          path="/admin/expenses"
+          element={
+            <RequireAuth userType={usrType}>
+              <MenuTab />
+            </RequireAuth>
+          }
+        />
+
+        <Route
           path="/admin/users"
           element={
             <RequireAuth userType={usrType}>
