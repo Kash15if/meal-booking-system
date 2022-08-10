@@ -1,9 +1,10 @@
-import LoginForm from "../../Components/Others/LoginForm";
+//Login Form
+import LoginForm from "../../CustomComponents/Forms/LoginForm";
 
 const userLogin = () => {
   return (
     <div>
-      <LoginForm header="Admin Login" />;
+      <LoginForm header="Admin Login" userType={"user"} />;
     </div>
   );
 };

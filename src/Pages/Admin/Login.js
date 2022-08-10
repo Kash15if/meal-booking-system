@@ -3,10 +3,14 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 //Login Form
-import LoginForm from "../../Components/Others/LoginForm";
+import LoginForm from "../../CustomComponents/Forms/LoginForm";
 
 const LogIn = () => {
-  return <LoginForm header="Admin Login" />;
+  const handleLogout = () => {
+    console.log("logOutclicked");
+  };
+
+  return <LoginForm header="Admin Login" userType="admin" />;
 };
 
 export default LogIn;

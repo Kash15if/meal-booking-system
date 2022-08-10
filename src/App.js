@@ -40,6 +40,7 @@ function App() {
     // console.log(routeArray[1]);
     setUserType(routeArray[1]);
   }, [location]);
+
   return (
     <div className="App">
       {usrType === "admin" ? <AdminNav /> : <ClientNav />}

@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import "./LoginForm.css";
 import LogoImg from "../../images/login.svg";
 
-const LoginForm = ({ header, handleAuth, handleLogout, loginType }) => {
+const LoginForm = ({ header, handleAuth, handleLogout, userType }) => {
   const [loginCreds, setLoginCreds] = useState({
     user: "",
     password: "",
@@ -22,7 +22,7 @@ const LoginForm = ({ header, handleAuth, handleLogout, loginType }) => {
     const passIn = loginCreds.password;
     const res = await axios({
       method: "post",
-      url: process.env.REACT_APP_AUTH_ROUTE + "/login",
+      url: process.env.REACT_APP_AUTH_ROUTE + "/" + userType + "/login",
       data: {
         user: {
           user: userIn,
@@ -64,7 +64,7 @@ const LoginForm = ({ header, handleAuth, handleLogout, loginType }) => {
             type="email"
             className="form-control"
             placeholder="Enter email"
-            id="email"
+            id="user"
           />
         </div>
         <div className="form-group fgLogin">
@@ -73,7 +73,7 @@ const LoginForm = ({ header, handleAuth, handleLogout, loginType }) => {
             type="password"
             className="form-control"
             placeholder="Enter password"
-            id="pwd"
+            id="password"
           />
         </div>
         <div class="form-group form-check fgLogin">
