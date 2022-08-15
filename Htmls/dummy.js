@@ -33,7 +33,7 @@ const NavBar = ({ menu }) => {
         </a>
       </li>
     ) : (
-      <li className={"nav-item "}>
+      <li>
         <a className="nav-link">
           <NavLink
             to="/admin/login"
@@ -63,8 +63,9 @@ const NavBar = ({ menu }) => {
       >
         <span className="navbar-toggler-icon"></span>
       </button>
-      <div className="collapse navbar-collapse py-2" id="navbarText">
-        <ul className="navbar-nav me-auto">
+
+      <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul className="navbar-nav ">
           {menu.map((item, index) => (
             <li className={"nav-item " + index === 0 ? "active" : ""}>
               <a className="nav-link">
@@ -79,9 +80,23 @@ const NavBar = ({ menu }) => {
               </a>
             </li>
           ))}
+          {/* <li className="nav-item active">
+            <a className="nav-link" href="#">
+              Home <span className="sr-only">(current)</span>
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="#">
+              Features
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="#">
+              Pricing
+            </a>
+          </li> */}
         </ul>
-
-        <ul className="navbar-nav">{conditionalBtn}</ul>
+        <ul cla>{conditionalBtn}</ul>
       </div>
     </nav>
   );
