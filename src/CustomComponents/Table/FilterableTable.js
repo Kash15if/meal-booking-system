@@ -11,36 +11,12 @@ const TableWithFilter = ({ tabData, header, filterableColumn }) => {
   useEffect(() => {
     let filteredData = tabData.filter((itemRow) => {
       return filterableColumn.some((colName, index) =>
-        itemRow[colName].includes(filterText)
+        itemRow[colName].toString().includes(filterText.toString())
       );
     });
 
     setData(filteredData);
   }, [filterText, filterableColumn, tabData]);
-  //header
-  // const filterableColumn = ["name", "ph"];
-  //   const header = ["id", "name", "ph"];
-  // const data = [
-  //   {
-  //     id: 1,
-  //     name: "Kashif",
-  //     ph: "90909001",
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Faraz",
-  //     ph: "90909001",
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "Rayan",
-  //     ph: "90909001",
-  //   },
-  // ];
-
-  //   let filterText = "";
-
-  // let selectedRow = {};
 
   const handleFilterChange = (e) => {
     var { value } = e.target;

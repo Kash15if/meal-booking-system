@@ -1,32 +1,80 @@
 import "./DashboardComp.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 import Card from "./../../../CustomComponents/Cards/NumberCards";
 import BarChart from "../../../CustomComponents/Charts/BarChart";
 import FilterableTable from "../../../CustomComponents/Table/FilterableTable";
 
 const DadhboarComp = () => {
+  //all datas for different components
+  const [cardData, setCardData] = useState();
+  const [tomMeal, setTomMeal] = useState();
+
+  //calling api
+  useEffect(() => {
+    (async () => {
+      const endPoint = process.env.REACT_APP_BASE_URL_ADMIN + "dashboard";
+
+      try {
+        const res = await axios({
+          method: "GET",
+          url: endPoint,
+          headers: {
+            "Content-Type": "application/json;charset=UTF-8",
+            "Access-Control-Allow-Origin": "*",
+            "x-access-token": "Bearer " + localStorage.getItem("token"),
+          },
+        });
+
+        let allData = res.data;
+        let cardDataArray = allData[0];
+        let tom_TabData_temp = allData[3];
+        console.log(cardDataArray);
+        let cardDataTemp = [
+          {
+            label: "Total Meal",
+            value: cardDataArray[0].Total_Meal,
+          },
+          {
+            label: "Total Expense",
+            value: cardDataArray[0].All_Expense,
+          },
+          {
+            label: "Cost/Meal",
+            value: cardDataArray[0].Meal_Cost,
+          },
+          {
+            label: "Tomorrrows Booked Meal",
+            value: cardDataArray[0].Tom_Meal,
+          },
+        ];
+
+        console.log(tom_TabData_temp);
+        setCardData(cardDataTemp);
+
+        setTomMeal(tom_TabData_temp);
+      } catch (err) {
+        console.log(err);
+        // logOut();
+      }
+    })();
+  }, []);
+
   return (
     <div className="Dashboard">
       <div className="container my-5">
         <div className="row p-2">
-          <div className="col-lg-6 col-sm-12">
-            <Card label={"Total Meal"} value={180} />
-          </div>
-          <div className="col-lg-6 col-sm-12">
-            <Card label={"Total Expense"} value={5800} />
-          </div>
-
-          <div className="col-lg-6 col-sm-12">
-            <Card label={"Cost/Meal"} value={60} />
-          </div>
-
-          <div className="col-lg-6 col-sm-12">
-            <Card label={"Tomorrrows Booked Meal"} value={50} />
-          </div>
+          {cardData &&
+            cardData.map((cardItem) => (
+              <div className="col-lg-6 col-sm-12">
+                <Card label={cardItem.label} value={cardItem.value} />
+              </div>
+            ))}
         </div>
       </div>
 
-      {/* Card End */}
+      {/*----------------------------------------------------- Card End ------------------------------------------*/}
 
       {/* Action buttons */}
 
@@ -49,7 +97,7 @@ const DadhboarComp = () => {
           </div>
         </div>
       </div>
-      {/* Action button Ends */}
+      {/* ----------------------------------------------------------Action button Ends --------------------------------------------*/}
 
       {/* Barchart This month  Data */}
       <div className="my-5">
@@ -57,33 +105,19 @@ const DadhboarComp = () => {
         <BarChart />
       </div>
 
-      {/* BarCharts end */}
+      {/* ---------------------------------------------BarCharts end ---------------------------------------------------------------*/}
 
       {/* Todays Meal -> Filterable table */}
       <div className="my-5">
-        <FilterableTable
-          tabData={[
-            {
-              id: 1,
-              name: "Kashif",
-              ph: "90909001",
-            },
-            {
-              id: 2,
-              name: "Faraz",
-              ph: "90909002",
-            },
-            {
-              id: 3,
-              name: "Rayan",
-              ph: "90909001",
-            },
-          ]}
-          header={["id", "name", "ph"]}
-          filterableColumn={["name", "ph"]}
-        />
+        {tomMeal && (
+          <FilterableTable
+            tabData={tomMeal}
+            header={["Date", "UserId", "Time", "Menu", "Meal_On", "Extra_Meal"]}
+            filterableColumn={["Date", "UserId", "Meal_On"]}
+          />
+        )}
       </div>
-      {/* Todays Meal Ends */}
+      {/* --------------------------------------------------------Todays Meal Ends--------------------------------------------- */}
     </div>
   );
 };
