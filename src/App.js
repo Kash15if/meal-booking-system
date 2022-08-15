@@ -102,14 +102,7 @@ function App() {
         />
 
         {/* User Routes */}
-        <Route
-          path="/user/login"
-          element={
-            <RequireAuth userType={usrType}>
-              <UserLogin />
-            </RequireAuth>
-          }
-        />
+        <Route path="/user/login" element={<UserLogin />} />
         <Route
           path="/user/dashboard"
           element={
