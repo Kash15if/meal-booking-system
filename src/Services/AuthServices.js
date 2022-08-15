@@ -60,8 +60,14 @@ export async function logInFun(endpint, user, password) {
   return false;
 }
 
-export function logOutFun({ user, tokeon }) {
+export function logOutFun() {
   // delete all datats from locastorage
+
+  localStorage.removeItem("token");
+  localStorage.removeItem("admin");
+  localStorage.removeItem("name");
+  localStorage.removeItem("auth");
+  return true;
 }
 
 export function CheckIfNoAuth({ children, userType }) {

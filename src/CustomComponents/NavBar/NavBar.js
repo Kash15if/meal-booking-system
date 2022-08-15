@@ -1,4 +1,5 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { logOutFun } from "../../Services/AuthServices";
 
 const NavBar = ({ menu }) => {
   //get usertype from path
@@ -6,6 +7,13 @@ const NavBar = ({ menu }) => {
   const pathArray = location.pathname.split("/");
   const userType = pathArray[1];
   const auth = localStorage.getItem("auth");
+
+  //logout fun
+  const navigate = useNavigate();
+  const handleLogOut = () => {
+    const logSuccess = logOutFun();
+    navigate("/admin/dashboard", { replace: true });
+  };
 
   //css class for selected Routes
   const activeStyle = {
@@ -46,7 +54,9 @@ const NavBar = ({ menu }) => {
     )
   ) : (
     <span className="navbar-text">
-      <button className="btn btn-danger">Log Out</button>
+      <button className="btn btn-danger" onClick={handleLogOut}>
+        Log Out
+      </button>
     </span>
   );
 
