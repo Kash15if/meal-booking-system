@@ -25,8 +25,8 @@ const CreateMenu = ({ formData, setFormData, handleFormSubmit }) => {
           className="form-control"
           id="date"
           aria-describedby="emailHelp"
-          value={formData.date}
-          name="date"
+          value={formData.Date}
+          name="Date"
           onChange={handleInput}
         />
       </div>
@@ -39,8 +39,8 @@ const CreateMenu = ({ formData, setFormData, handleFormSubmit }) => {
           className="form-control"
           id="time"
           aria-describedby="emailHelp"
-          value={formData.time}
-          name="time"
+          value={formData.Time}
+          name="Time"
           onChange={handleInput}
         />
       </div>
@@ -49,9 +49,9 @@ const CreateMenu = ({ formData, setFormData, handleFormSubmit }) => {
         <label className="form-label">Quantity</label>
         <input
           className="form-control"
-          value={formData.menu}
+          value={formData.Menu}
           onChange={handleInput}
-          name="menu"
+          name="Menu"
         />
       </div>
 

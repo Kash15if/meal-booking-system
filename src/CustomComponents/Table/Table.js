@@ -1,33 +1,22 @@
+import { useState } from "react";
 import Table from "react-bootstrap/Table";
 import { PencilSquare } from "react-bootstrap-icons";
 
 import { TrashFill } from "react-bootstrap-icons";
 
 const BSTable = ({ data, header, handleEditRow, deleteRow }) => {
-  //props
-  //selectedData , setSelectedData , data , header , deleteData
+  const [filterText, setFilterText] = useState("");
+  const [tabData, setTabData] = useState();
 
-  //header
-  // const header = ["id", "name", "ph"];
-  // const data = [
-  //   {
-  //     id: 1,
-  //     name: "Kashif",
-  //     ph: "90909001",
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Faraz",
-  //     ph: "90909001",
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "Rayan",
-  //     ph: "90909001",
-  //   },
-  // ];
+  // useEffect(() => {
+  //   let filteredData = tabData.filter((itemRow) => {
+  //     return filterableColumn.some((colName, index) =>
+  //       itemRow[colName].toString().includes(filterText.toString())
+  //     );
+  //   });
 
-  // let selectedRow = {};
+  //   setData(filteredData);
+  // }, [filterText, filterableColumn, tabData]);
 
   const handleEditTable = (oneRow) => {
     // console.log(oneRow);
@@ -41,6 +30,11 @@ const BSTable = ({ data, header, handleEditRow, deleteRow }) => {
     deleteRow(oneRow);
   };
 
+  const handleFilterChange = (e) => {
+    var { value } = e.target;
+    setFilterText(value);
+  };
+
   return (
     <div
       style={{
@@ -51,6 +45,19 @@ const BSTable = ({ data, header, handleEditRow, deleteRow }) => {
         height: "60vh",
       }}
     >
+      <div className="col-md-4 col-lg-3 col-sm-12 offset-md-8 offset-lg-9 my-3">
+        <input
+          type="text"
+          className="form-control"
+          id="filter-text"
+          placeholder="Search"
+          aria-describedby="Filter-text"
+          value={filterText}
+          name="date"
+          // onChange={handleFilterChange}
+        />
+      </div>
+
       <Table bordered rounded-10 hover>
         <thead>
           <tr>
