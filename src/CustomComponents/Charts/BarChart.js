@@ -9,6 +9,7 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import { PersonPlus } from "react-bootstrap-icons";
 
 ChartJS.register(
   CategoryScale,
@@ -19,7 +20,7 @@ ChartJS.register(
   Legend
 );
 
-const BarChart = () => {
+const BarChart = (props) => {
   const options = {
     responsive: true,
     plugins: {
@@ -47,14 +48,12 @@ const BarChart = () => {
     },
   };
 
-  const labels = ["January", "February", "March", "April"];
-
   const data = {
-    labels,
+    labels: props.labels,
     datasets: [
       {
-        label: "Dataset 1",
-        data: [12, 14, 56, 24],
+        label: "Daily Meals",
+        data: props.data,
         backgroundColor: "#097969",
       },
     ],

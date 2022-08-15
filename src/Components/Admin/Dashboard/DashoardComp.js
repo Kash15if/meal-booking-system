@@ -11,6 +11,9 @@ const DadhboarComp = () => {
   const [cardData, setCardData] = useState();
   const [tomMeal, setTomMeal] = useState();
 
+  const [barData, setBarData] = useState();
+  const [dailyMealsLabel, setDailyMealsLabel] = useState();
+
   //calling api
   useEffect(() => {
     (async () => {
@@ -29,8 +32,9 @@ const DadhboarComp = () => {
 
         let allData = res.data;
         let cardDataArray = allData[0];
+        let barDataTemp = allData[1];
         let tom_TabData_temp = allData[3];
-        console.log(cardDataArray);
+        console.log(allData);
         let cardDataTemp = [
           {
             label: "Total Meal",
@@ -54,6 +58,12 @@ const DadhboarComp = () => {
         setCardData(cardDataTemp);
 
         setTomMeal(tom_TabData_temp);
+
+        let dailyMealsLabelTemp = barDataTemp.map((row) => row.Date);
+        let dailyMealsDataTemp = barDataTemp.map((row) => row.Meals);
+
+        setDailyMealsLabel(dailyMealsLabelTemp);
+        setBarData(dailyMealsDataTemp);
       } catch (err) {
         console.log(err);
         // logOut();
@@ -101,8 +111,9 @@ const DadhboarComp = () => {
 
       {/* Barchart This month  Data */}
       <div className="my-5">
-        {" "}
-        <BarChart />
+        {barData && dailyMealsLabel && (
+          <BarChart data={barData} labels={dailyMealsLabel} />
+        )}
       </div>
 
       {/* ---------------------------------------------BarCharts end ---------------------------------------------------------------*/}
