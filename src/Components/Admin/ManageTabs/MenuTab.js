@@ -85,9 +85,9 @@ const MenuTab = () => {
           "x-access-token": "Bearer " + localStorage.getItem("token"),
         },
         data: {
-          date: newData.Date,
-          time: newData.Time,
-          menu: newData.Menu,
+          date: selectedRow.Date,
+          time: selectedRow.Time,
+          menu: selectedRow.Menu,
         },
       });
 

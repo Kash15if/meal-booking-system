@@ -1,10 +1,11 @@
 import { useState } from "react";
 
 const CreateMenu = ({ formData, setFormData, handleFormSubmit }) => {
-  const handleSubmit = () => {
-    handleFormSubmit();
-    // setSelectedData(formData);
-  };
+  // const handleSubmit = () => {
+  //   handleFormSubmit(formData);
+
+  //   // setSelectedData(formData);
+  // };
 
   const handleInput = (e) => {
     var { name, value } = e.target;
