@@ -63,3 +63,24 @@ export async function logInFun(endpint, user, password) {
 export function logOutFun({ user, tokeon }) {
   // delete all datats from locastorage
 }
+
+export function CheckIfNoAuth({ children, userType }) {
+  let token = localStorage.getItem("token");
+  let auth = localStorage.getItem("auth");
+
+  let location = useLocation();
+
+  if (auth) {
+    if (userType === "admin") {
+      return (
+        <Navigate to="/admin/dashboard" state={{ from: location }} replace />
+      );
+    } else {
+      return (
+        <Navigate to="/user/dashboard" state={{ from: location }} replace />
+      );
+    }
+  }
+
+  return children;
+}

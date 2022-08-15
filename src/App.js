@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
-import { RequireAuth } from "./Services/AuthServices";
+import { RequireAuth, CheckIfNoAuth } from "./Services/AuthServices";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -47,7 +47,14 @@ function App() {
       <Routes>
         {/* Admin Routes */}
 
-        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route
+          path="/admin/login"
+          element={
+            <CheckIfNoAuth userType={usrType}>
+              <AdminLogin />
+            </CheckIfNoAuth>
+          }
+        />
         <Route
           path="/admin/dashboard"
           element={
@@ -102,7 +109,14 @@ function App() {
         />
 
         {/* User Routes */}
-        <Route path="/user/login" element={<UserLogin />} />
+        <Route
+          path="/user/login"
+          element={
+            <CheckIfNoAuth userType={usrType}>
+              <UserLogin />
+            </CheckIfNoAuth>
+          }
+        />
         <Route
           path="/user/dashboard"
           element={
