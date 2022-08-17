@@ -17,6 +17,7 @@ import UserLogin from "./Pages/Users/Login";
 //testing comps
 import BSTable from "./CustomComponents/Table/Table";
 import MenuTab from "./Components/Admin/ManageTabs/MenuTab";
+import ManageExpense from "./Pages/Admin/Expenses";
 import NumberCards from "./CustomComponents/Cards/NumberCards";
 import MealBooking from "./Components/User/MealBooking";
 import Dashboard from "./Pages/Admin/Dashboard";
@@ -77,7 +78,7 @@ function App() {
           path="/admin/expenses"
           element={
             <RequireAuth userType={usrType}>
-              <MenuTab />
+              <ManageExpense />
             </RequireAuth>
           }
         />
