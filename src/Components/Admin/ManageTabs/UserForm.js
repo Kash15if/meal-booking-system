@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 const UserForm = ({ formData, setFormData, handleFormSubmit }) => {
-  const handleSubmit = () => {
-    handleFormSubmit();
-    // setSelectedData(formData);
-  };
+  // const handleSubmit = () => {
+  //   handleFormSubmit();
+  //   // setSelectedData(formData);
+  // };
 
   const handleInput = (e) => {
     var { name, value } = e.target;
@@ -19,39 +19,54 @@ const UserForm = ({ formData, setFormData, handleFormSubmit }) => {
       style={{ backgroundColor: "#D6F4DE" }}
     >
       <div className="mb-3">
-        <label className="form-label">Date</label>
-        <input
-          type="date"
-          className="form-control"
-          id="date"
-          aria-describedby="emailHelp"
-          value={formData.date}
-          name="date"
-          onChange={handleInput}
-        />
-      </div>
-
-      <div>
-        {" "}
-        <label className="form-label">Time</label>
+        <label className="form-label">User Id</label>
         <input
           type="text"
           className="form-control"
-          id="time"
+          id="userid"
           aria-describedby="emailHelp"
-          value={formData.time}
-          name="time"
+          value={formData.userid}
+          name="userid"
           onChange={handleInput}
         />
       </div>
 
       <div className="mb-3">
-        <label className="form-label">Quantity</label>
+        <label className="form-label">Password</label>
         <input
+          type="text"
           className="form-control"
-          value={formData.menu}
+          id="password"
+          aria-describedby="emailHelp"
+          value={formData.password}
+          name="password"
           onChange={handleInput}
-          name="menu"
+        />
+      </div>
+
+      <div className="mb-3">
+        <label className="form-label">Name</label>
+        <input
+          type="text"
+          className="form-control"
+          id="date"
+          aria-describedby="emailHelp"
+          value={formData.name}
+          name="name"
+          onChange={handleInput}
+        />
+      </div>
+
+      <div className="mb-3">
+        <label className="form-label">Department</label>
+        <input
+          type="text"
+          className="form-control"
+          id="dept"
+          aria-describedby="emailHelp"
+          value={formData.dept}
+          name="dept"
+          onChange={handleInput}
         />
       </div>
 
