@@ -31,7 +31,7 @@ const TableWithFilter = ({ tabData, header, filterableColumn }) => {
         borderRadius: "0.5rem",
         minWidth: "100%",
         overflow: "auto",
-        height: "60vh",
+        height: "75vh",
       }}
     >
       <h4 style={{ textAlign: "center", marginTop: "2rem" }}>My Meals</h4>
