@@ -85,13 +85,13 @@ const UserTab = () => {
       });
 
       console.log(res);
-      setSelectedRow();
-      fetchMenuData({
+      setSelectedRow({
         userid: "",
         password: "",
         name: "",
         dept: "",
       });
+      fetchMenuData();
     } catch (err) {
       console.log(err);
       // logOut();
