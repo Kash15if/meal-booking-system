@@ -1,9 +1,86 @@
 //book next 7 days meals
 //using cart system +1 - 1 and num with menu
 
+import { useEffect } from "react";
+import { useState } from "react";
+
+import axios from "axios";
 import "./MealBooking.css";
 
 const MealBooking = () => {
+  const [mealStatus, setMealStatus] = useState();
+
+  useEffect(() => {
+    getMealData();
+  }, []);
+
+  const getMealData = async () => {
+    const endPoint = process.env.REACT_APP_BASE_URL_USER + "meal";
+
+    try {
+      const res = await axios({
+        method: "GET",
+        url: endPoint,
+        headers: {
+          "Content-Type": "application/json;charset=UTF-8",
+          "Access-Control-Allow-Origin": "*",
+          "x-access-token": "Bearer " + localStorage.getItem("token"),
+        },
+      });
+
+      let allData = res.data;
+
+      setMealStatus(allData);
+      console.log(allData);
+    } catch (err) {
+      console.log(err);
+      // logOut();
+    }
+  };
+
+  const handleSubmitMeals = async () => {
+    const endPoint = process.env.REACT_APP_BASE_URL_USER + "meal";
+
+    try {
+      const res = await axios({
+        method: "PUT",
+        url: endPoint,
+        headers: {
+          "Content-Type": "application/json;charset=UTF-8",
+          "Access-Control-Allow-Origin": "*",
+          "x-access-token": "Bearer " + localStorage.getItem("token"),
+        },
+        data: mealStatus,
+      });
+
+      console.log(res);
+      getMealData();
+    } catch (err) {
+      console.log(err);
+      // logOut();
+    }
+  };
+  // const handleInputChange = (e, index) => {
+  //   const { value } = e.target;
+
+  //   let tempData = mealStatus;
+  //   let tempObj = { ...tempData[index], Extra_Meal: value };
+  //   tempData[index] = tempObj;
+  //   console.log(tempObj);
+  //   setMealStatus(tempData);
+  //   console.log(value);
+  // };
+
+  const handleToggleChange = (e, index) => {
+    const { name, checked } = e.target;
+
+    let tempData = mealStatus;
+    let tempObj = tempData[index];
+    tempData[index] = { ...tempObj, [name]: checked ? 1 : 0 };
+    setMealStatus(tempData);
+    console.log(tempData);
+  };
+
   return (
     <div className="jumbotron jumbotron-fluid">
       <h4 style={{ textAlign: "center", margin: "2rem 0 4rem 0" }}>
@@ -19,166 +96,45 @@ const MealBooking = () => {
             <th>Additional Meals</th>
           </tr>
 
-          <tr>
-            <td>2022-01-01</td>
-            <td>Lunch</td>
-            <td>Fish</td>
-            <td>
-              <div className="switchBtn">
-                <label className="switch">
-                  <input type="checkbox" checked />
-                  <span className="slider round"></span>
-                </label>
-              </div>
-            </td>
-            <td>
-              <input
-                type="number"
-                id="quantity"
-                name="quantity"
-                min="0"
-                max="5"
-              />
-            </td>
-          </tr>
-
-          <tr>
-            <td>2022-01-02</td>
-            <td>Lunch</td>
-            <td>Fish</td>
-            <td>
-              <div className="switchBtn">
-                <label className="switch">
-                  <input type="checkbox" checked />
-                  <span className="slider round"></span>
-                </label>
-              </div>
-            </td>
-            <td>
-              <input
-                type="number"
-                id="quantity"
-                name="quantity"
-                min="1"
-                max="5"
-              />
-            </td>
-          </tr>
-
-          <tr>
-            <td>2022-01-03</td>
-            <td>Lunch</td>
-            <td>Fish</td>
-            <td>
-              <div className="switchBtn">
-                <label className="switch">
-                  <input type="checkbox" checked />
-                  <span className="slider round"></span>
-                </label>
-              </div>
-            </td>
-            <td>
-              <input
-                type="number"
-                id="quantity"
-                name="quantity"
-                min="1"
-                max="5"
-              />
-            </td>
-          </tr>
-
-          <tr>
-            <td>2022-01-04</td>
-            <td>Lunch</td>
-            <td>Fish</td>
-            <td>
-              <div className="switchBtn">
-                <label className="switch">
-                  <input type="checkbox" checked />
-                  <span className="slider round"></span>
-                </label>
-              </div>
-            </td>
-            <td>
-              <input
-                type="number"
-                id="quantity"
-                name="quantity"
-                min="1"
-                max="5"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>2022-01-05</td>
-            <td>Lunch</td>
-            <td>Fish</td>
-            <td>
-              <div className="switchBtn">
-                <label className="switch">
-                  <input type="checkbox" checked />
-                  <span className="slider round"></span>
-                </label>
-              </div>
-            </td>
-            <td>
-              <input
-                type="number"
-                id="quantity"
-                name="quantity"
-                min="1"
-                max="5"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>2022-01-06</td>
-            <td>Lunch</td>
-            <td>Fish</td>
-            <td>
-              <div className="switchBtn">
-                <label className="switch">
-                  <input type="checkbox" checked />
-                  <span className="slider round"></span>
-                </label>
-              </div>
-            </td>
-            <td>
-              <input
-                type="number"
-                id="quantity"
-                name="quantity"
-                min="1"
-                max="5"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>2022-01-07</td>
-            <td>Lunch</td>
-            <td>Fish</td>
-            <td>
-              <div className="switchBtn">
-                <label className="switch">
-                  <input type="checkbox" checked />
-                  <span className="slider round"></span>
-                </label>
-              </div>
-            </td>
-            <td>
-              <input
-                type="number"
-                id="quantity"
-                name="quantity"
-                min="1"
-                max="5"
-              />
-            </td>
-          </tr>
+          {mealStatus &&
+            mealStatus.map((row, index) => (
+              <tr key={index}>
+                <td>{row.Date}</td>
+                <td>{row.Time}</td>
+                <td>{row.Menu}</td>
+                <td>
+                  <div className="switchBtn">
+                    <label className="switch">
+                      <input
+                        name="Meal_On"
+                        type="checkbox"
+                        value={row.Meal_On === 1 ? "checked" : ""}
+                        onChange={(e) => handleToggleChange(e, index)}
+                      />
+                      <span className="slider round"></span>
+                    </label>
+                  </div>
+                </td>
+                <td>
+                  <div className="switchBtn">
+                    <label className="switch">
+                      <input
+                        name="Extra_Meal"
+                        type="checkbox"
+                        value={row.Extra_Meal === 1 ? "checked" : ""}
+                        onChange={(e) => handleToggleChange(e, index)}
+                      />
+                      <span className="slider round"></span>
+                    </label>
+                  </div>
+                </td>
+              </tr>
+            ))}
         </table>
         <div className="saveBtn">
-          <button className="btn btn-success">Save Data</button>
+          <button className="btn btn-success" onClick={handleSubmitMeals}>
+            Save Data
+          </button>
         </div>
       </div>
     </div>
