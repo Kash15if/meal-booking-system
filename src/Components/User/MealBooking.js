@@ -31,7 +31,6 @@ const MealBooking = () => {
       let allData = res.data;
 
       setMealStatus(allData);
-      console.log(allData);
     } catch (err) {
       console.log(err);
       // logOut();
@@ -53,7 +52,6 @@ const MealBooking = () => {
         data: mealStatus,
       });
 
-      console.log(res);
       getMealData();
     } catch (err) {
       console.log(err);
@@ -78,7 +76,6 @@ const MealBooking = () => {
     let tempObj = tempData[index];
     tempData[index] = { ...tempObj, [name]: checked ? 1 : 0 };
     setMealStatus(tempData);
-    console.log(tempData);
   };
 
   return (
