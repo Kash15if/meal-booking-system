@@ -32,7 +32,10 @@ const Dashboard = () => {
         let allData = res.data;
         let cardDataArray = allData[0];
         let barDataTemp = allData[1];
-        let tom_TabData_temp = allData[2];
+        let tom_TabData_temp = allData[2].map((item) => ({
+          ...item,
+          Date: new Date(item.Date).toISOString().split("T")[0],
+        }));
         console.log(allData);
         let cardDataTemp = [
           {
@@ -53,12 +56,14 @@ const Dashboard = () => {
           },
         ];
 
-        console.log(tom_TabData_temp);
+        // console.log(tom_TabData_temp);
         setCardData(cardDataTemp);
 
         setTomMeal(tom_TabData_temp);
 
-        let dailyMealsLabelTemp = barDataTemp.map((row) => row.Date);
+        let dailyMealsLabelTemp = barDataTemp.map(
+          (row) => new Date(row.Date).toISOString().split("T")[0]
+        );
         let dailyMealsDataTemp = barDataTemp.map((row) => row.Meals);
 
         setDailyMealsLabel(dailyMealsLabelTemp);

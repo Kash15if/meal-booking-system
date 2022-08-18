@@ -32,7 +32,12 @@ const MealBooking = () => {
 
       let allData = res.data;
 
-      setMealStatus(allData);
+      setMealStatus(
+        allData.map((item) => ({
+          ...item,
+          Date: new Date(item.Date).toISOString().split("T")[0],
+        }))
+      );
     } catch (err) {
       console.log(err);
       // logOut();
@@ -54,7 +59,6 @@ const MealBooking = () => {
         data: mealStatus,
       });
 
-      console.log(res);
       getMealData();
     } catch (err) {
       console.log(err);
@@ -77,13 +81,11 @@ const MealBooking = () => {
 
     let tempData = mealStatus;
     tempData[index] = selectedRow;
+
+    //spread the array then only it will work -> shallow cloning and deep cloning
     setMealStatus([...tempData]);
     // console.log(tempData);
   };
-
-  useEffect(() => {
-    console.log(mealStatus);
-  }, [mealStatus]);
 
   return (
     <div className="jumbotron jumbotron-fluid">

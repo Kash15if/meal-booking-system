@@ -33,7 +33,12 @@ const MenuTab = () => {
 
       let allData = res.data;
       console.log(allData);
-      setTabData(allData);
+      setTabData(
+        allData.map((item) => ({
+          ...item,
+          Date: new Date(item.Date).toISOString().split("T")[0],
+        }))
+      );
 
       let tempHeader = Object.keys(allData[0]);
       setTabHeader(tempHeader);

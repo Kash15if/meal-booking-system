@@ -34,7 +34,12 @@ const ExpenseTab = () => {
 
       let allData = res.data;
       console.log(allData);
-      setTabData(allData);
+      setTabData(
+        allData.map((item) => ({
+          ...item,
+          date: new Date(item.date).toISOString().split("T")[0],
+        }))
+      );
 
       let tempHeader = Object.keys(allData[0]);
       setTabHeader(tempHeader);

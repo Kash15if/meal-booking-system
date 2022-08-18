@@ -32,8 +32,14 @@ const DadhboarComp = () => {
 
         let allData = res.data;
         let cardDataArray = allData[0];
-        let barDataTemp = allData[1];
-        let tom_TabData_temp = allData[3];
+        let barDataTemp = allData[1].map((item) => ({
+          ...item,
+          Date: new Date(item.Date).toISOString().split("T")[0],
+        }));
+        let tom_TabData_temp = allData[3].map((item) => ({
+          ...item,
+          Date: new Date(item.Date).toISOString().split("T")[0],
+        }));
         console.log(allData);
         let cardDataTemp = [
           {

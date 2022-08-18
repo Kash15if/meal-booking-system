@@ -29,12 +29,17 @@ const YearMeals = () => {
 
       let allData = res.data;
 
-      setMeals(allData);
+      setMeals(
+        allData.map((item) => ({
+          ...item,
+          Date: new Date(item.Date).toISOString().split("T")[0],
+        }))
+      );
 
       if (allData.length > 0) {
         setHeader(Object.keys(allData[0]));
       }
-      console.log(allData);
+      // console.log(allData);
     } catch (err) {
       console.log(err);
       // logOut();
