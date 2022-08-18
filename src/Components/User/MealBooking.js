@@ -7,6 +7,8 @@ import { useState } from "react";
 import axios from "axios";
 import "./MealBooking.css";
 
+import MealTabRows from "./MealBookingTabComp";
+
 const MealBooking = () => {
   const [mealStatus, setMealStatus] = useState();
 
@@ -70,15 +72,18 @@ const MealBooking = () => {
   //   console.log(value);
   // };
 
-  const handleToggleChange = (e, index) => {
-    const { name, checked } = e.target;
+  const handleToggleChange = (selectedRow, index) => {
+    // const { name, checked } = e.target;
 
     let tempData = mealStatus;
-    let tempObj = tempData[index];
-    tempData[index] = { ...tempObj, [name]: checked ? 1 : 0 };
-    setMealStatus(tempData);
-    console.log(tempData);
+    tempData[index] = selectedRow;
+    setMealStatus([...tempData]);
+    // console.log(tempData);
   };
+
+  useEffect(() => {
+    console.log(mealStatus);
+  }, [mealStatus]);
 
   return (
     <div className="jumbotron jumbotron-fluid">
@@ -86,50 +91,24 @@ const MealBooking = () => {
         My Next 7 days booking
       </h4>
       <div className="container" style={{ overflowX: "scroll" }}>
-        <table style={{ width: "70%", margin: "auto" }}>
-          <tr>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Menu</th>
-            <th>ON/OFF</th>
-            <th>Additional Meals</th>
-          </tr>
-
-          {mealStatus &&
-            mealStatus.map((row, index) => (
-              <tr key={index}>
-                <td>{row.Date}</td>
-                <td>{row.Time}</td>
-                <td>{row.Menu}</td>
-                <td>
-                  <div className="switchBtn">
-                    <label className="switch">
-                      <input
-                        name="Meal_On"
-                        type="checkbox"
-                        value={row.Meal_On === 1 ? "checked" : ""}
-                        onChange={(e) => handleToggleChange(e, index)}
-                      />
-                      <span className="slider round"></span>
-                    </label>
-                  </div>
-                </td>
-                <td>
-                  <div className="switchBtn">
-                    <label className="switch">
-                      <input
-                        name="Extra_Meal"
-                        type="checkbox"
-                        value={row.Extra_Meal === 1 ? "checked" : ""}
-                        onChange={(e) => handleToggleChange(e, index)}
-                      />
-                      <span className="slider round"></span>
-                    </label>
-                  </div>
-                </td>
-              </tr>
+        {mealStatus && (
+          <table style={{ width: "70%", margin: "auto" }}>
+            <tr>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Menu</th>
+              <th>ON/OFF</th>
+              <th>Additional Meals</th>
+            </tr>
+            {mealStatus.map((row, index) => (
+              <MealTabRows
+                index={index}
+                row={row}
+                handleToggleChange={handleToggleChange}
+              />
             ))}
-        </table>
+          </table>
+        )}
         <div className="saveBtn">
           <button className="btn btn-success" onClick={handleSubmitMeals}>
             Save Data
