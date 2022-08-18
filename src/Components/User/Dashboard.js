@@ -2,84 +2,106 @@ import Card from "./../../CustomComponents/Cards/NumberCards";
 import BarChart from "../../CustomComponents/Charts/BarChart";
 import FilterableTable from "../../CustomComponents/Table/FilterableTable";
 
+import { useState, useEffect } from "react";
+import axios from "axios";
+
 const Dashboard = () => {
+  //all datas for different components
+  const [cardData, setCardData] = useState();
+  const [tomMeal, setTomMeal] = useState();
+
+  const [barData, setBarData] = useState();
+  const [dailyMealsLabel, setDailyMealsLabel] = useState();
+
+  //calling api
+  useEffect(() => {
+    (async () => {
+      const endPoint = process.env.REACT_APP_BASE_URL_USER + "dashboard";
+
+      try {
+        const res = await axios({
+          method: "GET",
+          url: endPoint,
+          headers: {
+            "Content-Type": "application/json;charset=UTF-8",
+            "Access-Control-Allow-Origin": "*",
+            "x-access-token": "Bearer " + localStorage.getItem("token"),
+          },
+        });
+
+        let allData = res.data;
+        let cardDataArray = allData[0];
+        let barDataTemp = allData[1];
+        let tom_TabData_temp = allData[2];
+        console.log(allData);
+        let cardDataTemp = [
+          {
+            label: "Total Meal",
+            value: cardDataArray[0].Total_Meal,
+          },
+          {
+            label: "Total Expense",
+            value: cardDataArray[0].All_Expense,
+          },
+          {
+            label: "Cost/Meal",
+            value: cardDataArray[0].Meal_Cost,
+          },
+          {
+            label: "My Meals this month",
+            value: cardDataArray[0].MyMeals,
+          },
+        ];
+
+        console.log(tom_TabData_temp);
+        setCardData(cardDataTemp);
+
+        setTomMeal(tom_TabData_temp);
+
+        let dailyMealsLabelTemp = barDataTemp.map((row) => row.Date);
+        let dailyMealsDataTemp = barDataTemp.map((row) => row.Meals);
+
+        setDailyMealsLabel(dailyMealsLabelTemp);
+        setBarData(dailyMealsDataTemp);
+      } catch (err) {
+        console.log(err);
+        // logOut();
+      }
+    })();
+  }, []);
+
   return (
     <div className="Dashboard">
       <div className="container my-5">
         <div className="row p-2">
-          <div className="col-lg-6 col-sm-12">
-            <Card label={"Total Meal"} value={180} />
-          </div>
-          <div className="col-lg-6 col-sm-12">
-            <Card label={"Total Expense"} value={5800} />
-          </div>
-
-          <div className="col-lg-6 col-sm-12">
-            <Card label={"Cost/Meal"} value={60} />
-          </div>
-
-          <div className="col-lg-6 col-sm-12">
-            <Card label={"Tomorrrows Booked Meal"} value={50} />
-          </div>
+          {cardData &&
+            cardData.map((cardItem) => (
+              <div className="col-lg-6 col-sm-12">
+                <Card label={cardItem.label} value={cardItem.value} />
+              </div>
+            ))}
         </div>
       </div>
 
       {/* Card End */}
 
-      {/* Action buttons */}
-
-      <div class="container my-5">
-        <div class="row p-2">
-          <div class="col-lg-4 col-sm-12  ">
-            <button class="btn btn-success downloadBtn">
-              Download Expense Summary
-            </button>
-          </div>
-
-          <div class="col-lg-4 col-sm-12  ">
-            <button class="btn btn-success downloadBtn">Send Bills</button>
-          </div>
-
-          <div class="col-lg-4 col-sm-12  ">
-            <button class="btn btn-success downloadBtn">
-              Download Emp. Data
-            </button>
-          </div>
-        </div>
-      </div>
-      {/* Action button Ends */}
-
       {/* Barchart This month  Data */}
       <div className="my-5">
         {" "}
-        <BarChart />
+        <BarChart data={barData} labels={dailyMealsLabel} />
       </div>
 
       {/* BarCharts end */}
 
       {/* Todays Meal -> Filterable table */}
       <div className="my-5">
-        <FilterableTable
-          tabData={[
-            {
-              id: 1,
-              name: "Kashif",
-              ph: "90909001",
-            },
-            {
-              id: 2,
-              name: "Faraz",
-              ph: "90909002",
-            },
-            {
-              id: 3,
-              name: "Rayan",
-              ph: "90909001",
-            },
-          ]}
-          header={["id", "name", "ph"]}
-          filterableColumn={["name", "ph"]}
-        />
+        {tomMeal && (
+          <FilterableTable
+            tabData={tomMeal}
+            header={["Date", "Time", "Menu", "Meal_On", "Extra_Meal"]}
+            filterableColumn={["Meal_On", "Date"]}
+          />
+        )}
       </div>
       {/* Todays Meal Ends */}
     </div>

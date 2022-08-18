@@ -14,6 +14,8 @@ import ManageUser from "./Pages/Admin/User";
 import UserDashboard from "./Pages/Users/Dasgboard";
 import UserLogin from "./Pages/Users/Login";
 
+import Errorpage from "./Pages/Others/404";
+
 //testing comps
 import BSTable from "./CustomComponents/Table/Table";
 import MenuTab from "./Components/Admin/ManageTabs/MenuTab";
@@ -104,7 +106,7 @@ function App() {
           path="/admin/resolve-conflicts"
           element={
             <RequireAuth userType={usrType}>
-              <Dashboard />
+              <Errorpage />
             </RequireAuth>
           }
         />
@@ -148,7 +150,7 @@ function App() {
           path="/user/create-conflicts"
           element={
             <RequireAuth userType={usrType}>
-              <MealBooking />
+              <Errorpage />
             </RequireAuth>
           }
         />

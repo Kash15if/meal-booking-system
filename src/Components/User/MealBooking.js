@@ -31,7 +31,6 @@ const MealBooking = () => {
       let allData = res.data;
 
       setMealStatus(allData);
-      console.log(allData);
     } catch (err) {
       console.log(err);
       // logOut();
@@ -78,6 +77,7 @@ const MealBooking = () => {
     let tempObj = tempData[index];
     tempData[index] = { ...tempObj, [name]: checked ? 1 : 0 };
     setMealStatus(tempData);
+    console.log(tempData);
   };
 
   return (
@@ -102,7 +102,7 @@ const MealBooking = () => {
                 <td>{row.Time}</td>
                 <td>{row.Menu}</td>
                 <td>
-                  <div className="switchBtn" key={index + "_On"}>
+                  <div className="switchBtn">
                     <label className="switch">
                       <input
                         name="Meal_On"
@@ -115,7 +115,7 @@ const MealBooking = () => {
                   </div>
                 </td>
                 <td>
-                  <div className="switchBtn" key={index + "_On"}>
+                  <div className="switchBtn">
                     <label className="switch">
                       <input
                         name="Extra_Meal"
