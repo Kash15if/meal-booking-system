@@ -4,11 +4,11 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
-import { useNavigate } from "react-router-dom";
-
 import axios from "axios";
 import "./MealBooking.css";
 
+import { useNavigate } from "react-router-dom";
+import { logOutFun } from "../../Services/AuthServices";
 import MealTabRows from "./MealBookingTabComp";
 
 const MealBooking = () => {
@@ -44,7 +44,15 @@ const MealBooking = () => {
       );
     } catch (err) {
       console.log(err);
-      // logOut();
+      logOut();
+    }
+  };
+
+  const logOut = async () => {
+    const logoutSuccess = await logOutFun();
+
+    if (logoutSuccess) {
+      navigate("/user/login", { replace: true });
     }
   };
 
@@ -66,9 +74,10 @@ const MealBooking = () => {
       getMealData();
     } catch (err) {
       console.log(err);
-      // logOut();
+      logOut();
     }
   };
+
   // const handleInputChange = (e, index) => {
   //   const { value } = e.target;
 

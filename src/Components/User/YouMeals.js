@@ -5,9 +5,14 @@ import { useState, useEffect } from "react";
 import FilterableTable from "./../../CustomComponents/Table/FilterableTable";
 import axios from "axios";
 
+import { useNavigate } from "react-router-dom";
+import { logOutFun } from "../../Services/AuthServices";
+
 const YearMeals = () => {
   const [meals, setMeals] = useState();
   const [header, setHeader] = useState();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchMeals();
@@ -42,9 +47,18 @@ const YearMeals = () => {
       // console.log(allData);
     } catch (err) {
       console.log(err);
-      // logOut();
+      logOut();
     }
   };
+
+  const logOut = async () => {
+    const logoutSuccess = await logOutFun();
+
+    if (logoutSuccess) {
+      navigate("/user/login", { replace: true });
+    }
+  };
+
   return (
     <div>
       {meals && header && (

@@ -6,6 +6,9 @@ import Card from "./../../../CustomComponents/Cards/NumberCards";
 import BarChart from "../../../CustomComponents/Charts/BarChart";
 import FilterableTable from "../../../CustomComponents/Table/FilterableTable";
 
+import { useNavigate } from "react-router-dom";
+import { logOutFun } from "..//../../Services/AuthServices";
+
 const DadhboarComp = () => {
   //all datas for different components
   const [cardData, setCardData] = useState();
@@ -13,6 +16,8 @@ const DadhboarComp = () => {
 
   const [barData, setBarData] = useState();
   const [dailyMealsLabel, setDailyMealsLabel] = useState();
+
+  const navigate = useNavigate();
 
   //calling api
   useEffect(() => {
@@ -72,10 +77,18 @@ const DadhboarComp = () => {
         setBarData(dailyMealsDataTemp);
       } catch (err) {
         console.log(err);
-        // logOut();
+        logOut();
       }
     })();
   }, []);
+
+  const logOut = async () => {
+    const logoutSuccess = await logOutFun();
+
+    if (logoutSuccess) {
+      navigate("/user/login", { replace: true });
+    }
+  };
 
   return (
     <div className="Dashboard">

@@ -60,7 +60,7 @@ export async function logInFun(endpint, user, password) {
   return false;
 }
 
-export function logOutFun(userType) {
+export function logOutFun() {
   // delete all datats from locastorage
 
   localStorage.removeItem("token");

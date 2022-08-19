@@ -1,10 +1,16 @@
 import FilterableTable from "../../CustomComponents/Table/FilterableTable";
 import axios from "axios";
 import { useState, useEffect } from "react";
+
+import { useNavigate } from "react-router-dom";
+import { logOutFun } from "../../Services/AuthServices";
+
 const AllMeals = () => {
   const [tabData, setTabData] = useState();
 
   const [tabHeader, setTabHeader] = useState();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchAllMeals();
@@ -37,7 +43,15 @@ const AllMeals = () => {
       setTabHeader(tempHeader);
     } catch (err) {
       console.log(err);
-      // logOut();
+      logOut();
+    }
+  };
+
+  const logOut = async () => {
+    const logoutSuccess = await logOutFun();
+
+    if (logoutSuccess) {
+      navigate("/user/login", { replace: true });
     }
   };
 

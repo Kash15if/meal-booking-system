@@ -5,6 +5,9 @@ import FilterableTable from "../../CustomComponents/Table/FilterableTable";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+import { useNavigate } from "react-router-dom";
+import { logOutFun } from "../../Services/AuthServices";
+
 const Dashboard = () => {
   //all datas for different components
   const [cardData, setCardData] = useState();
@@ -12,6 +15,8 @@ const Dashboard = () => {
 
   const [barData, setBarData] = useState();
   const [dailyMealsLabel, setDailyMealsLabel] = useState();
+
+  const navigate = useNavigate();
 
   //calling api
   useEffect(() => {
@@ -70,10 +75,18 @@ const Dashboard = () => {
         setBarData(dailyMealsDataTemp);
       } catch (err) {
         console.log(err);
-        // logOut();
+        logOut();
       }
     })();
   }, []);
+
+  const logOut = async () => {
+    const logoutSuccess = await logOutFun();
+
+    if (logoutSuccess) {
+      navigate("/user/login", { replace: true });
+    }
+  };
 
   return (
     <div className="Dashboard">

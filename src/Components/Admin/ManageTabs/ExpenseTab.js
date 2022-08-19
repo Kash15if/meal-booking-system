@@ -3,6 +3,9 @@ import BsTable from "../../../CustomComponents/Table/Table";
 import ExpenseForm from "./ExpenseForm";
 import axios from "axios";
 
+import { useNavigate } from "react-router-dom";
+import { logOutFun } from "../../../Services/AuthServices";
+
 const ExpenseTab = () => {
   const [tabData, setTabData] = useState();
   const [selectedRow, setSelectedRow] = useState({
@@ -13,6 +16,8 @@ const ExpenseTab = () => {
   });
 
   const [tabHeader, setTabHeader] = useState();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchMenuData();
@@ -45,7 +50,15 @@ const ExpenseTab = () => {
       setTabHeader(tempHeader);
     } catch (err) {
       console.log(err);
-      // logOut();
+      logOut();
+    }
+  };
+
+  const logOut = async () => {
+    const logoutSuccess = await logOutFun();
+
+    if (logoutSuccess) {
+      navigate("/user/login", { replace: true });
     }
   };
 
