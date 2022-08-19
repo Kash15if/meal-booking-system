@@ -4,6 +4,8 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
+import { useNavigate } from "react-router-dom";
+
 import axios from "axios";
 import "./MealBooking.css";
 
@@ -15,6 +17,8 @@ const MealBooking = () => {
   useEffect(() => {
     getMealData();
   }, []);
+
+  const navigate = useNavigate();
 
   const getMealData = async () => {
     const endPoint = process.env.REACT_APP_BASE_URL_USER + "meal";

@@ -29,18 +29,7 @@ const NavBar = ({ menu }) => {
   };
 
   const conditionalBtn = !auth ? (
-    userType === "user" ? (
-      <li className={"nav-item "}>
-        <a className="nav-link">
-          <NavLink
-            to="/user/login"
-            style={({ isActive }) => (isActive ? activeStyle : normalStyle)}
-          >
-            <b>{"User Login"}</b>
-          </NavLink>
-        </a>
-      </li>
-    ) : (
+    userType === "admin" ? (
       <li className={"nav-item "}>
         <a className="nav-link">
           <NavLink
@@ -48,6 +37,17 @@ const NavBar = ({ menu }) => {
             style={({ isActive }) => (isActive ? activeStyle : normalStyle)}
           >
             <b>{"Admin Login"}</b>
+          </NavLink>
+        </a>
+      </li>
+    ) : (
+      <li className={"nav-item "}>
+        <a className="nav-link">
+          <NavLink
+            to="/user/login"
+            style={({ isActive }) => (isActive ? activeStyle : normalStyle)}
+          >
+            <b>{"User Login"}</b>
           </NavLink>
         </a>
       </li>

@@ -40,8 +40,9 @@ function App() {
   useEffect(() => {
     let routeArray = location.pathname.split("/");
 
-    // console.log(routeArray[1]);
-    setUserType(routeArray[1]);
+    let tmpUser = routeArray[1] || "user";
+    console.log(tmpUser);
+    setUserType(tmpUser);
   }, [location]);
 
   return (
@@ -49,6 +50,15 @@ function App() {
       {usrType === "admin" ? <AdminNav /> : <ClientNav />}
       <Routes>
         {/* Admin Routes */}
+
+        <Route
+          index
+          element={
+            <CheckIfNoAuth userType={usrType}>
+              <UserLogin />
+            </CheckIfNoAuth>
+          }
+        />
 
         <Route
           path="/admin/login"
