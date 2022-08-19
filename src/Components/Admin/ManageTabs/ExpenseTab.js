@@ -58,7 +58,7 @@ const ExpenseTab = () => {
     const logoutSuccess = await logOutFun();
 
     if (logoutSuccess) {
-      navigate("/user/login", { replace: true });
+      navigate("/admin/login", { replace: true });
     }
   };
 

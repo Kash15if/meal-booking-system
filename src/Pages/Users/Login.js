@@ -26,7 +26,7 @@ const UserLogin = () => {
   return (
     <div>
       <LoginForm
-        header="Admin Login"
+        header="User Login"
         userType={"user"}
         loginCreds={loginCreds}
         setLoginCreds={setLoginCreds}

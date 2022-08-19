@@ -35,11 +35,11 @@ const LoginForm = ({
         <img src={LogoImg} alt="" class="profileLogo" />
 
         <div className="form-group fgLogin">
-          <label for="email">Email address:</label>
+          <label for="email">Office Id:</label>
           <input
             type="text"
             className="form-control"
-            placeholder="Enter email"
+            placeholder="Enter Id"
             id="user"
             value={loginCreds.user}
             onChange={handleChange}
