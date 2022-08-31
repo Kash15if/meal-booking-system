@@ -11,8 +11,11 @@ import { useNavigate } from "react-router-dom";
 import { logOutFun } from "../../Services/AuthServices";
 import MealTabRows from "./MealBookingTabComp";
 
+import Alerts from "../../CustomComponents/Alerts/Alerts";
+
 const MealBooking = () => {
   const [mealStatus, setMealStatus] = useState();
+  const [alert, setAlert] = useState(false);
 
   useEffect(() => {
     getMealData();
@@ -74,6 +77,7 @@ const MealBooking = () => {
       });
 
       getMealData();
+      setAlert(true);
     } catch (err) {
       console.log(err);
       logOut();
@@ -104,6 +108,14 @@ const MealBooking = () => {
 
   return (
     <div className="jumbotron jumbotron-fluid">
+      {alert && (
+        <Alerts
+          variant="danger"
+          children="Meals has been updated"
+          setAlert={setAlert}
+        />
+      )}
+
       <h4 style={{ textAlign: "center", margin: "2rem 0 4rem 0" }}>
         My Next 7 days booking
       </h4>

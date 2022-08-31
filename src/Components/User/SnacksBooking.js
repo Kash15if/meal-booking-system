@@ -8,8 +8,11 @@ import { useNavigate } from "react-router-dom";
 import { logOutFun } from "../../Services/AuthServices";
 import SnacksBookingComp from "./SnacksBookingComp";
 
+import Alerts from "../../CustomComponents/Alerts/Alerts";
+
 const EveningSnacks = () => {
   const [mealStatus, setMealStatus] = useState();
+  const [alert, setAlert] = useState(false);
 
   useEffect(() => {
     getMealData();
@@ -71,6 +74,7 @@ const EveningSnacks = () => {
       });
 
       getMealData();
+      setAlert(true);
     } catch (err) {
       console.log(err);
       logOut();
@@ -85,6 +89,13 @@ const EveningSnacks = () => {
 
   return (
     <div className="jumbotron jumbotron-fluid">
+      {alert && (
+        <Alerts
+          variant="danger"
+          children="Evening Snacks has been updated"
+          setAlert={setAlert}
+        />
+      )}
       <h4 style={{ textAlign: "center", margin: "2rem 0 4rem 0" }}>
         My Next 7 days booking
       </h4>
