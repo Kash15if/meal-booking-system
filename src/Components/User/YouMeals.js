@@ -66,6 +66,7 @@ const YearMeals = () => {
           tabData={meals}
           header={header}
           filterableColumn={["Extra_Meal", "Date"]}
+          tableHeading="My Meals(Last 3 months)"
         />
       )}
     </div>

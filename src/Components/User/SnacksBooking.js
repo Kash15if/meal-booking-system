@@ -18,7 +18,7 @@ const EveningSnacks = () => {
   const navigate = useNavigate();
 
   const getMealData = async () => {
-    const endPoint = process.env.REACT_APP_BASE_URL_USER + "meal";
+    const endPoint = process.env.REACT_APP_BASE_URL_USER + "meals";
 
     try {
       const res = await axios({
@@ -27,6 +27,7 @@ const EveningSnacks = () => {
         headers: {
           "Content-Type": "application/json;charset=UTF-8",
           "Access-Control-Allow-Origin": "*",
+          time: "ES",
           "x-access-token": "Bearer " + localStorage.getItem("token"),
         },
       });
@@ -54,7 +55,7 @@ const EveningSnacks = () => {
   };
 
   const handleSubmitMeals = async () => {
-    const endPoint = process.env.REACT_APP_BASE_URL_USER + "meal";
+    const endPoint = process.env.REACT_APP_BASE_URL_USER + "meals";
 
     try {
       const res = await axios({
@@ -63,6 +64,7 @@ const EveningSnacks = () => {
         headers: {
           "Content-Type": "application/json;charset=UTF-8",
           "Access-Control-Allow-Origin": "*",
+          time: "ES",
           "x-access-token": "Bearer " + localStorage.getItem("token"),
         },
         data: mealStatus,
@@ -75,26 +77,10 @@ const EveningSnacks = () => {
     }
   };
 
-  // const handleInputChange = (e, index) => {
-  //   const { value } = e.target;
-
-  //   let tempData = mealStatus;
-  //   let tempObj = { ...tempData[index], Extra_Meal: value };
-  //   tempData[index] = tempObj;
-  //   console.log(tempObj);
-  //   setMealStatus(tempData);
-  //   console.log(value);
-  // };
-
   const handleToggleChange = (selectedRow, index) => {
-    // const { name, checked } = e.target;
-
     let tempData = mealStatus;
     tempData[index] = selectedRow;
-
-    //spread the array then only it will work -> shallow cloning and deep cloning
     setMealStatus([...tempData]);
-    // console.log(tempData);
   };
 
   return (

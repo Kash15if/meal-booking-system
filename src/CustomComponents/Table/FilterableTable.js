@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 
-const TableWithFilter = ({ tabData, header, filterableColumn }) => {
+const TableWithFilter = ({
+  tabData,
+  header,
+  filterableColumn,
+  tableHeading,
+}) => {
   //props
   //selectedData , setSelectedData , data , header , deleteData
 
@@ -34,7 +39,7 @@ const TableWithFilter = ({ tabData, header, filterableColumn }) => {
         height: "75vh",
       }}
     >
-      <h4 style={{ textAlign: "center", marginTop: "2rem" }}>My Meals</h4>
+      <h4 style={{ textAlign: "center", marginTop: "2rem" }}>{tableHeading}</h4>
       <div className="row my-3">
         <div className="col-md-4 col-lg-3 col-sm-12 offset-md-8 offset-lg-9">
           <input

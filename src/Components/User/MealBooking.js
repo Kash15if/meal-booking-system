@@ -21,7 +21,7 @@ const MealBooking = () => {
   const navigate = useNavigate();
 
   const getMealData = async () => {
-    const endPoint = process.env.REACT_APP_BASE_URL_USER + "meal";
+    const endPoint = process.env.REACT_APP_BASE_URL_USER + "meals";
 
     try {
       const res = await axios({
@@ -30,6 +30,7 @@ const MealBooking = () => {
         headers: {
           "Content-Type": "application/json;charset=UTF-8",
           "Access-Control-Allow-Origin": "*",
+          time: "Lunch",
           "x-access-token": "Bearer " + localStorage.getItem("token"),
         },
       });
@@ -57,7 +58,7 @@ const MealBooking = () => {
   };
 
   const handleSubmitMeals = async () => {
-    const endPoint = process.env.REACT_APP_BASE_URL_USER + "meal";
+    const endPoint = process.env.REACT_APP_BASE_URL_USER + "meals";
 
     try {
       const res = await axios({
@@ -66,6 +67,7 @@ const MealBooking = () => {
         headers: {
           "Content-Type": "application/json;charset=UTF-8",
           "Access-Control-Allow-Origin": "*",
+          time: "Lunch",
           "x-access-token": "Bearer " + localStorage.getItem("token"),
         },
         data: mealStatus,

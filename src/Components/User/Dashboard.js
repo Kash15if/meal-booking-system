@@ -118,6 +118,7 @@ const Dashboard = () => {
             tabData={tomMeal}
             header={["Date", "Time", "Menu", "Meal_On", "Extra_Meal"]}
             filterableColumn={["Meal_On", "Date"]}
+            tableHeading="My Meals this month"
           />
         )}
       </div>
