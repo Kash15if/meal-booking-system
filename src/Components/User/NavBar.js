@@ -4,7 +4,8 @@ import NavBar from "../../CustomComponents/NavBar/NavBar";
 const ClientNav = () => {
   const [menu, setMenu] = useState([
     { compRoute: "/user/dashboard", compLabel: "Dashboard" },
-    { compRoute: "/user/bookmeal", compLabel: "Book Meal" },
+    { compRoute: "/user/bookmeal", compLabel: "Lunch" },
+    { compRoute: "/user/booksnacks", compLabel: "Snacks" },
     { compRoute: "/user/allmeals", compLabel: "My Meals" },
     { compRoute: "/user/create-conflicts", compLabel: "Create Conflicts" },
   ]);

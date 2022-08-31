@@ -31,6 +31,7 @@ import ClientNav from "./Components/User/NavBar";
 import { useEffect, useState } from "react";
 import UserTab from "./Components/Admin/ManageTabs/UserTable";
 import AllMeals from "./Pages/Admin/AllMeals";
+import BookSnacks from "./Pages/Users/SnacksBooking";
 
 function App() {
   const [usrType, setUserType] = useState("user");
@@ -144,6 +145,14 @@ function App() {
           element={
             <RequireAuth userType={usrType}>
               <MealBooking />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/user/booksnacks"
+          element={
+            <RequireAuth userType={usrType}>
+              <BookSnacks />
             </RequireAuth>
           }
         />
