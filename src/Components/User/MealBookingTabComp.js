@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./MealBooking.css";
 
+import CartCounter from "../../CustomComponents/Cards/CartCounters";
+
 const MealTabRows = ({ index, row, handleToggleChange }) => {
   const [mealOn, setMealOn] = useState(row.Meal_On === 0 ? false : true);
 
@@ -15,10 +17,10 @@ const MealTabRows = ({ index, row, handleToggleChange }) => {
     // setMealOn(!mealOn);
   };
 
-  const handleExtraMeal = (e) => {
-    const { name, value } = e.target;
+  const handleExtraMeal = (val) => {
+    // const { name, value } = e.target;
 
-    const tempObj = { ...row, [name]: value };
+    const tempObj = { ...row, Extra_Meal: val };
     // console.log(tempObj);
     handleToggleChange(tempObj, index);
     // setMealOn(!mealOn);
@@ -48,14 +50,15 @@ const MealTabRows = ({ index, row, handleToggleChange }) => {
       </td>
       <td>
         <div className="extraMeal">
-          <input
+          <CartCounter count={row.Extra_Meal} setCount={handleExtraMeal} />
+          {/* <input
             name="Extra_Meal"
             type="number"
             min={0}
             max={5}
             value={row.Extra_Meal}
             onChange={(e) => handleExtraMeal(e)}
-          />
+          /> */}
         </div>
       </td>
     </tr>

@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { RequireAuth, CheckIfNoAuth } from "./Services/AuthServices";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 //admin pages
 import AdminDashboard from "./Pages/Admin/Dashboard";
