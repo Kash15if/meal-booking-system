@@ -48,20 +48,56 @@ const DadhboarComp = () => {
         console.log(allData);
         let cardDataTemp = [
           {
-            label: "Total Meal",
-            value: cardDataArray[0].Total_Meal,
+            label: "Tommorrow Lunch",
+            value: cardDataArray[0].Tom_Lunch,
           },
           {
-            label: "Total Expense",
+            label: "Todays Lunch",
+            value: cardDataArray[0].Today_Lunch,
+          },
+          {
+            label: "Todays Snacks",
+            value: cardDataArray[0].Today_ES,
+          },
+          {
+            label: "Yesterday Lunch",
+            value: cardDataArray[0].Yest_Lunch,
+          },
+          {
+            label: "Lunch Expense",
+            value: cardDataArray[0].Lunch_Expense,
+          },
+          {
+            label: "Lunch(this month)",
+            value: cardDataArray[0].Tom_Lunch,
+          },
+          {
+            label: "Cost/Lunch",
+            value: cardDataArray[0].Lunch_Cost,
+          },
+          {
+            label: "Snacks Expense",
+            value: cardDataArray[0].Snacks_Expense,
+          },
+          {
+            label: "Snacks(this month)",
+            value: cardDataArray[0].Total_Snacks,
+          },
+          {
+            label: "Cost/Snacks",
+            value: cardDataArray[0].ES_Cost,
+          },
+          {
+            label: "Last ES charge",
+            value: cardDataArray[0].Last_Month_ESCharge,
+          },
+          {
+            label: "Last Lunch Charge",
+            value: cardDataArray[0].Last_Month_LunchCharge,
+          },
+          {
+            label: "All Expense",
             value: cardDataArray[0].All_Expense,
-          },
-          {
-            label: "Cost/Meal",
-            value: cardDataArray[0].Meal_Cost,
-          },
-          {
-            label: "Tomorrrows Booked Meal",
-            value: cardDataArray[0].Tom_Meal,
           },
         ];
 
