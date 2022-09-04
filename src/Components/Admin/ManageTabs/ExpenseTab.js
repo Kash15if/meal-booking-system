@@ -46,7 +46,7 @@ const ExpenseTab = () => {
         }))
       );
 
-      let tempHeader = Object.keys(allData[0]);
+      let tempHeader = allData && allData.length && Object.keys(allData[0]);
       setTabHeader(tempHeader);
     } catch (err) {
       console.log(err);
@@ -129,13 +129,13 @@ const ExpenseTab = () => {
         padding: "1rem",
       }}
     >
+      <ExpenseForm
+        formData={selectedRow}
+        setFormData={setSelectedRow}
+        handleFormSubmit={addOrUpdateRow}
+      />
       {tabHeader && tabData ? (
         <div>
-          <ExpenseForm
-            formData={selectedRow}
-            setFormData={setSelectedRow}
-            handleFormSubmit={addOrUpdateRow}
-          />
           <BsTable
             data={tabData}
             header={tabHeader}
