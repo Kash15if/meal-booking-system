@@ -46,6 +46,7 @@ const DadhboarComp = () => {
           Date: new Date(item.Date).toISOString().split("T")[0],
         }));
         console.log(allData);
+        console.log(barDataTemp);
         let cardDataTemp = [
           {
             label: "Tommorrow Lunch",
@@ -107,7 +108,7 @@ const DadhboarComp = () => {
         setTomMeal(tom_TabData_temp);
 
         let dailyMealsLabelTemp = barDataTemp.map((row) => row.Date);
-        let dailyMealsDataTemp = barDataTemp.map((row) => row.Meals);
+        let dailyMealsDataTemp = barDataTemp;
 
         setDailyMealsLabel(dailyMealsLabelTemp);
         setBarData(dailyMealsDataTemp);

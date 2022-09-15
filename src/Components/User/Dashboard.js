@@ -69,7 +69,9 @@ const Dashboard = () => {
         let dailyMealsLabelTemp = barDataTemp.map(
           (row) => new Date(row.Date).toISOString().split("T")[0]
         );
-        let dailyMealsDataTemp = barDataTemp.map((row) => row.Meals);
+        let dailyMealsDataTemp = barDataTemp;
+
+        console.log(barDataTemp);
 
         setDailyMealsLabel(dailyMealsLabelTemp);
         setBarData(dailyMealsDataTemp);

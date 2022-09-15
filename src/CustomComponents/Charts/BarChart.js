@@ -52,13 +52,23 @@ const BarChart = (props) => {
     labels: props.labels,
     datasets: [
       {
-        label: "Daily Meals",
-        data: props.data,
+        label: "Lunch",
+        data: props.data
+          .filter((itemRow) => itemRow.Time === "Lunch")
+          .map((item) => item.Meals),
         backgroundColor: "#097969",
+      },
+      {
+        label: "Evening Snacks",
+        data: props.data
+          .filter((itemRow) => itemRow.Time === "ES")
+          .map((item) => item.Meals),
+        backgroundColor: "#0064FF",
       },
     ],
   };
 
+  console.log(data);
   return <Bar options={options} data={data} />;
 };
 
