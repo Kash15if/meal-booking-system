@@ -14,6 +14,7 @@ const ExpenseForm = ({ formData, setFormData, handleFormSubmit }) => {
 
   //   {
   //     date: "",
+  // time : "",
   //     expense: "",
   //     breakup: "",
   //     details: "",
@@ -34,6 +35,19 @@ const ExpenseForm = ({ formData, setFormData, handleFormSubmit }) => {
           aria-describedby="emailHelp"
           value={formData.date}
           name="date"
+          onChange={handleInput}
+        />
+      </div>
+
+      <div className="mb-3">
+        <label className="form-label">Time</label>
+        <input
+          type="text"
+          className="form-control"
+          id="time"
+          aria-describedby="emailHelp"
+          value={formData.time}
+          name="time"
           onChange={handleInput}
         />
       </div>

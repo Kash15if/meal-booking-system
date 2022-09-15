@@ -10,6 +10,7 @@ const ExpenseTab = () => {
   const [tabData, setTabData] = useState();
   const [selectedRow, setSelectedRow] = useState({
     date: "",
+    time: "",
     expense: "",
     breakup: "",
     details: "",
@@ -47,6 +48,8 @@ const ExpenseTab = () => {
       );
 
       let tempHeader = allData && allData.length && Object.keys(allData[0]);
+
+      console.log(tempHeader);
       setTabHeader(tempHeader);
     } catch (err) {
       console.log(err);
@@ -105,6 +108,7 @@ const ExpenseTab = () => {
       console.log(res);
       setSelectedRow({
         date: "",
+        time: "",
         expense: "",
         breakup: "",
         details: "",
