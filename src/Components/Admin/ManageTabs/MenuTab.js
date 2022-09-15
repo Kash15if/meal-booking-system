@@ -3,6 +3,8 @@ import BsTable from "../../../CustomComponents/Table/Table";
 import CreateMenu from "./MenuForm";
 import axios from "axios";
 
+import Alerts from "../../../CustomComponents/Alerts/Alerts";
+
 import { useNavigate } from "react-router-dom";
 import { logOutFun } from "../../../Services/AuthServices";
 
@@ -15,6 +17,8 @@ const MenuTab = () => {
   });
 
   const [tabHeader, setTabHeader] = useState();
+
+  const [alert, setAlert] = useState(false);
 
   const navigate = useNavigate();
 
@@ -110,6 +114,8 @@ const MenuTab = () => {
       });
 
       console.log(res);
+
+      setAlert(true);
       fetchMenuData();
     } catch (err) {
       console.log(err);
@@ -125,6 +131,14 @@ const MenuTab = () => {
 
   return (
     <div>
+      {alert && (
+        <Alerts
+          variant="danger"
+          children="Expense has been updated"
+          setAlert={setAlert}
+        />
+      )}
+
       {tabHeader && tabData ? (
         <div
           style={{

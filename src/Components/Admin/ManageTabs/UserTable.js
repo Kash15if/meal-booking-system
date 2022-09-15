@@ -6,6 +6,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { logOutFun } from "../../../Services/AuthServices";
 
+import Alerts from "../../../CustomComponents/Alerts/Alerts";
+
 const UserTab = () => {
   const [tabData, setTabData] = useState();
   const [selectedRow, setSelectedRow] = useState({
@@ -14,6 +16,8 @@ const UserTab = () => {
     name: "",
     dept: "",
   });
+
+  const [alert, setAlert] = useState(false);
 
   const [tabHeader, setTabHeader] = useState();
 
@@ -104,6 +108,8 @@ const UserTab = () => {
         name: "",
         dept: "",
       });
+
+      setAlert(true);
       fetchMenuData();
     } catch (err) {
       console.log(err);
@@ -124,6 +130,13 @@ const UserTab = () => {
         padding: "1rem",
       }}
     >
+      {alert && (
+        <Alerts
+          variant="danger"
+          children="Expense has been updated"
+          setAlert={setAlert}
+        />
+      )}
       {tabHeader && tabData ? (
         <div>
           <CreateUser
