@@ -108,7 +108,9 @@ const Dashboard = () => {
       {/* Barchart This month  Data */}
       <div className="my-5">
         {" "}
-        <BarChart data={barData} labels={dailyMealsLabel} />
+        {dailyMealsLabel && barData && (
+          <BarChart data={barData} labels={dailyMealsLabel} />
+        )}
       </div>
 
       {/* BarCharts end */}
