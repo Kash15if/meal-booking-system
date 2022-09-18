@@ -6,6 +6,8 @@ import Card from "./../../../CustomComponents/Cards/NumberCards";
 import BarChart from "../../../CustomComponents/Charts/BarChart";
 import FilterableTable from "../../../CustomComponents/Table/FilterableTable";
 
+import FileDownload from "js-file-download";
+
 import "reactjs-popup/dist/index.css";
 import Popup from "reactjs-popup";
 
@@ -139,6 +141,32 @@ const DadhboarComp = () => {
     }
   };
 
+  const summaryExcelDownload = async () => {
+    const endPoint = process.env.REACT_APP_BASE_URL_ADMIN + "getsummary";
+    console.log(endPoint);
+    let month = 9;
+
+    try {
+      const res = await axios({
+        method: "POST",
+        url: endPoint,
+        responseType: "blob",
+        headers: {
+          "Content-Type": "application/json;charset=UTF-8",
+          "Access-Control-Allow-Origin": "*",
+          "x-access-token": "Bearer " + localStorage.getItem("token"),
+        },
+      });
+
+      // //for creating download link
+      FileDownload(res.data, `MealSummary_Month-${month}.xlsx`);
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+      // logOut();
+    }
+  };
+
   return (
     <div className="Dashboard">
       <div className="container my-5">
@@ -159,7 +187,10 @@ const DadhboarComp = () => {
       <div class="container my-5">
         <div class="row p-2">
           <div class="col-lg-4 col-sm-12  ">
-            <button class="btn btn-success downloadBtn">
+            <button
+              class="btn btn-success downloadBtn"
+              onClick={summaryExcelDownload}
+            >
               Download Expense Summary
             </button>
           </div>
