@@ -6,6 +6,12 @@ import Card from "./../../../CustomComponents/Cards/NumberCards";
 import BarChart from "../../../CustomComponents/Charts/BarChart";
 import FilterableTable from "../../../CustomComponents/Table/FilterableTable";
 
+import "reactjs-popup/dist/index.css";
+import Popup from "reactjs-popup";
+
+import MailSend from "./PopUps/MailSender";
+import ExcelDownloadPopUp from "./PopUps/ExcelDownloadPopUp";
+
 import { useNavigate } from "react-router-dom";
 import { logOutFun } from "..//../../Services/AuthServices";
 
@@ -18,6 +24,12 @@ const DadhboarComp = () => {
   const [dailyMealsLabel, setDailyMealsLabel] = useState();
 
   const navigate = useNavigate();
+
+  const contentStyle = {
+    maxWidth: "600px",
+    width: "90%",
+    backgroundColor: "rgb(190, 132, 243)",
+  };
 
   //calling api
   useEffect(() => {
@@ -153,13 +165,93 @@ const DadhboarComp = () => {
           </div>
 
           <div class="col-lg-4 col-sm-12  ">
-            <button class="btn btn-success downloadBtn">Send Bills</button>
+            <Popup
+              trigger={
+                <button class="btn btn-success downloadBtn">Send Bills</button>
+              }
+              position="right center"
+              modal
+              contentStyle={contentStyle}
+            >
+              {(close) => (
+                <MailSend
+                  close={close}
+                  tabData={[
+                    {
+                      id: 1,
+                      selected: 0,
+                      label: "Ignace",
+                    },
+                    {
+                      id: 2,
+                      selected: 1,
+                      label: "Ellette",
+                    },
+                    {
+                      id: 3,
+                      selected: 0,
+                      label: "Davin",
+                    },
+                    {
+                      id: 4,
+                      selected: 0,
+                      label: "Kahaleel",
+                    },
+                    {
+                      id: 5,
+                      selected: 0,
+                      label: "Husein",
+                    },
+                  ]}
+                />
+              )}
+            </Popup>
           </div>
 
           <div class="col-lg-4 col-sm-12  ">
-            <button class="btn btn-success downloadBtn">
-              Download Emp. Data
-            </button>
+            <Popup
+              trigger={
+                <button class="btn btn-success downloadBtn">
+                  Download Emp. Data
+                </button>
+              }
+              position="right center"
+              modal
+              contentStyle={contentStyle}
+            >
+              {(close) => (
+                <ExcelDownloadPopUp
+                  close={close}
+                  tabData={[
+                    {
+                      id: 1,
+                      selected: 0,
+                      label: "Ignace",
+                    },
+                    {
+                      id: 2,
+                      selected: 1,
+                      label: "Ellette",
+                    },
+                    {
+                      id: 3,
+                      selected: 0,
+                      label: "Davin",
+                    },
+                    {
+                      id: 4,
+                      selected: 0,
+                      label: "Kahaleel",
+                    },
+                    {
+                      id: 5,
+                      selected: 0,
+                      label: "Husein",
+                    },
+                  ]}
+                />
+              )}
+            </Popup>
           </div>
         </div>
       </div>
