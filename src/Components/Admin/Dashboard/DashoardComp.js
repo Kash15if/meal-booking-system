@@ -25,6 +25,8 @@ const DadhboarComp = () => {
   const [barData, setBarData] = useState();
   const [dailyMealsLabel, setDailyMealsLabel] = useState();
 
+  const [userList, setUserList] = useState();
+
   const navigate = useNavigate();
 
   const contentStyle = {
@@ -124,6 +126,7 @@ const DadhboarComp = () => {
         let dailyMealsLabelTemp = barDataTemp.map((row) => row.Date);
         let dailyMealsDataTemp = barDataTemp;
 
+        setUserList(allData[4]);
         setDailyMealsLabel(dailyMealsLabelTemp);
         setBarData(dailyMealsDataTemp);
       } catch (err) {
@@ -204,38 +207,7 @@ const DadhboarComp = () => {
               modal
               contentStyle={contentStyle}
             >
-              {(close) => (
-                <MailSend
-                  close={close}
-                  tabData={[
-                    {
-                      id: 1,
-                      selected: 0,
-                      label: "Ignace",
-                    },
-                    {
-                      id: 2,
-                      selected: 1,
-                      label: "Ellette",
-                    },
-                    {
-                      id: 3,
-                      selected: 0,
-                      label: "Davin",
-                    },
-                    {
-                      id: 4,
-                      selected: 0,
-                      label: "Kahaleel",
-                    },
-                    {
-                      id: 5,
-                      selected: 0,
-                      label: "Husein",
-                    },
-                  ]}
-                />
-              )}
+              {(close) => <MailSend close={close} tabData={userList} />}
             </Popup>
           </div>
 
@@ -251,36 +223,7 @@ const DadhboarComp = () => {
               contentStyle={contentStyle}
             >
               {(close) => (
-                <ExcelDownloadPopUp
-                  close={close}
-                  tabData={[
-                    {
-                      id: 1,
-                      selected: 0,
-                      label: "Ignace",
-                    },
-                    {
-                      id: 2,
-                      selected: 1,
-                      label: "Ellette",
-                    },
-                    {
-                      id: 3,
-                      selected: 0,
-                      label: "Davin",
-                    },
-                    {
-                      id: 4,
-                      selected: 0,
-                      label: "Kahaleel",
-                    },
-                    {
-                      id: 5,
-                      selected: 0,
-                      label: "Husein",
-                    },
-                  ]}
-                />
+                <ExcelDownloadPopUp close={close} tabData={userList} />
               )}
             </Popup>
           </div>

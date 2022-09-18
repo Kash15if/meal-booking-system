@@ -11,12 +11,14 @@ const MailSend = ({ tabData, close }) => {
   const [filterString, setFilterString] = useState("");
 
   useEffect(() => {
-    let filteredData = tabData.filter((itemRow) => {
-      return itemRow.label
-        .toString()
-        .toLowerCase()
-        .includes(filterString.toString().toLowerCase());
-    });
+    let filteredData =
+      tabData &&
+      tabData.filter((itemRow) => {
+        return itemRow.label
+          .toString()
+          .toLowerCase()
+          .includes(filterString.toString().toLowerCase());
+      });
 
     setData(filteredData);
   }, [filterString, tabData]);
@@ -43,7 +45,7 @@ const MailSend = ({ tabData, close }) => {
   };
 
   const sendMail = async () => {
-    const endPoint = process.env.REACT_APP_BASE_URL_ADMIN + "dashboard";
+    const endPoint = process.env.REACT_APP_BASE_URL_ADMIN + "sendmails";
 
     try {
       const res = await axios({
@@ -54,7 +56,7 @@ const MailSend = ({ tabData, close }) => {
           "Access-Control-Allow-Origin": "*",
           "x-access-token": "Bearer " + localStorage.getItem("token"),
         },
-        data: data,
+        data: data.filter((item) => item.selected === 1),
       });
     } catch (err) {
       console.log(err);
