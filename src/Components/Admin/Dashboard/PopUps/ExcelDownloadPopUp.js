@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Popup from "reactjs-popup";
+import FileDownload from "js-file-download";
+
+import axios from "axios";
 
 import "./MailSender.css";
 
@@ -24,7 +27,51 @@ const ExcelDownload = ({ tabData, close }) => {
     setFilterString(value);
   };
 
-  const downloadexcel = ({ id, label }) => {
+  const downloadexcel = async ({ id, label }) => {
+    const endPoint = process.env.REACT_APP_BASE_URL_ADMIN + "getemp-excel";
+
+    try {
+      // axios({
+      //   url: endPoint, //your url
+      //   method: "POST",
+      //   responseType: "blob", // important
+      // }).then((response) => {
+      //   // create file link in browser's memory
+      //   const href = URL.createObjectURL(response.data);
+
+      //   // create "a" HTLM element with href to file & click
+      //   const link = document.createElement("a");
+      //   link.href = href;
+      //   link.setAttribute("download", "file.pdf"); //or any other extension
+      //   document.body.appendChild(link);
+      //   link.click();
+
+      //   // clean up "a" element & remove ObjectURL
+      //   document.body.removeChild(link);
+      //   URL.revokeObjectURL(url);
+      // });
+
+      let month = 9;
+
+      const res = await axios({
+        method: "POST",
+        url: endPoint,
+        responseType: "blob",
+        headers: {
+          "Content-Type": "application/json;charset=UTF-8",
+          "Access-Control-Allow-Origin": "*",
+          "x-access-token": "Bearer " + localStorage.getItem("token"),
+        },
+        data: { uid: 81, name: label, month: month },
+      });
+
+      // //for creating download link
+      FileDownload(res.data, `DailyMeals_${id}-${month}.xlsx`);
+      // console.log(res);
+    } catch (err) {
+      console.log(err);
+      // logOut();
+    }
     console.log("sendMail to", label, id);
   };
   const contentStyle = {
@@ -49,7 +96,7 @@ const ExcelDownload = ({ tabData, close }) => {
             <div>
               <input
                 className="form-control"
-                id="inputdefault"
+                id="searchBox"
                 type="text"
                 placeholder="Search"
                 onChange={filterChange}

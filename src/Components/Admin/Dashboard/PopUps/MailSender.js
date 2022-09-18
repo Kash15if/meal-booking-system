@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Popup from "reactjs-popup";
 
+import axios from "axios";
+
 import "./MailSender.css";
 
 const MailSend = ({ tabData, close }) => {
@@ -40,7 +42,24 @@ const MailSend = ({ tabData, close }) => {
     setFilterString(value);
   };
 
-  const sendMail = () => {
+  const sendMail = async () => {
+    const endPoint = process.env.REACT_APP_BASE_URL_ADMIN + "dashboard";
+
+    try {
+      const res = await axios({
+        method: "POST",
+        url: endPoint,
+        headers: {
+          "Content-Type": "application/json;charset=UTF-8",
+          "Access-Control-Allow-Origin": "*",
+          "x-access-token": "Bearer " + localStorage.getItem("token"),
+        },
+        data: data,
+      });
+    } catch (err) {
+      console.log(err);
+      // logOut();
+    }
     console.log(
       "sendMail to",
       data.filter((item) => item.selected === 1)
@@ -70,7 +89,7 @@ const MailSend = ({ tabData, close }) => {
             <div>
               <input
                 className="form-control"
-                id="inputdefault"
+                id="searchBox"
                 type="text"
                 placeholder="Search"
                 onChange={filterChange}
@@ -83,6 +102,7 @@ const MailSend = ({ tabData, close }) => {
                 return (
                   <div className="name-checkbox" key={index}>
                     <input
+                      className="checkBox"
                       type="checkbox"
                       id={index}
                       name="vehicle1"

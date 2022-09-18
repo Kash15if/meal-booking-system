@@ -115,7 +115,7 @@ card
   color: #2980b9;
 }
 
-input[type="checkbox"] {
+.checkBox {
   outline: max(2px, 0.15em) solid white;
   outline-offset: max(2px, 0.15em);
   zoom: 1.4;
@@ -135,7 +135,7 @@ input[type="checkbox"] {
   display: none; /* Safari and Chrome */
 }
 
-input[type="text"] {
+#searchBox {
   width: 80%;
   padding: 12px 5%;
   margin: 8px 0;
@@ -157,7 +157,7 @@ input[type="text"] {
     margin: 8px;
   }
 
-  input[type="text"] {
+  #searchBox {
     width: 90%;
   }
 }
