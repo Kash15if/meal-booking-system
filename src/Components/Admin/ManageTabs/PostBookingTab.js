@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import BsTable from "../../../CustomComponents/Table/Table";
-import CreateMenu from "./MenuForm";
+import CreatePostBooking from "./PostBookingForm";
 import axios from "axios";
 
 import Alerts from "../../../CustomComponents/Alerts/Alerts";
@@ -13,7 +13,7 @@ const MenuTab = () => {
   const [selectedRow, setSelectedRow] = useState({
     Date: "",
     Time: "",
-    Menu: "",
+    UserId: "",
   });
 
   const [tabHeader, setTabHeader] = useState();
@@ -27,7 +27,7 @@ const MenuTab = () => {
   }, []);
 
   const fetchMenuData = async () => {
-    const endPoint = process.env.REACT_APP_BASE_URL_ADMIN + "menu";
+    const endPoint = process.env.REACT_APP_BASE_URL_ADMIN + "post-booking";
 
     try {
       const res = await axios({
@@ -49,11 +49,11 @@ const MenuTab = () => {
         }))
       );
 
-      let tempHeader = allData.length && Object.keys(allData[0]);
+      let tempHeader = Object.keys(allData[0]);
       setTabHeader(tempHeader);
     } catch (err) {
       console.log(err);
-      // logOut();
+      //   logOut();
     }
   };
 
@@ -68,7 +68,7 @@ const MenuTab = () => {
   const deleteOneRow = async (delRow) => {
     //delete and update using api
 
-    const endPoint = process.env.REACT_APP_BASE_URL_ADMIN + "menu";
+    const endPoint = process.env.REACT_APP_BASE_URL_ADMIN + "post-booking";
 
     try {
       const res = await axios({
@@ -82,7 +82,7 @@ const MenuTab = () => {
         data: {
           date: delRow.Date,
           time: delRow.Time,
-          menu: delRow.Menu,
+          id: delRow.UserId,
         },
       });
 
@@ -95,7 +95,7 @@ const MenuTab = () => {
   };
 
   const addOrUpdateRow = async (newData) => {
-    const endPoint = process.env.REACT_APP_BASE_URL_ADMIN + "menu";
+    const endPoint = process.env.REACT_APP_BASE_URL_ADMIN + "post-booking";
 
     try {
       const res = await axios({
@@ -109,7 +109,7 @@ const MenuTab = () => {
         data: {
           date: selectedRow.Date,
           time: selectedRow.Time,
-          menu: selectedRow.Menu,
+          id: selectedRow.UserId,
         },
       });
 
@@ -139,11 +139,12 @@ const MenuTab = () => {
         />
       )}
 
-      <CreateMenu
+      <CreatePostBooking
         formData={selectedRow}
         setFormData={setSelectedRow}
         handleFormSubmit={addOrUpdateRow}
       />
+
       {tabHeader && tabData ? (
         <div
           style={{

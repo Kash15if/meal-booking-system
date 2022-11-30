@@ -1,8 +1,11 @@
 import "./NumberCards.css";
 
 const NumberCards = ({ label, value }) => {
+  let cardColor = value === "OFF" ? "redNumCard" : "";
+
+  console.log(value);
   return (
-    <div className="cardForDetOuter">
+    <div className={"cardForDetOuter " + cardColor}>
       <div className="cardForDets">
         <h4>
           {label}: {value}

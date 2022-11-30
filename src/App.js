@@ -18,24 +18,27 @@ import UserLogin from "./Pages/Users/Login";
 import Errorpage from "./Pages/Others/404";
 
 //testing comps
-import BSTable from "./CustomComponents/Table/Table";
 import MenuTab from "./Components/Admin/ManageTabs/MenuTab";
 import ManageExpense from "./Pages/Admin/Expenses";
 import NumberCards from "./CustomComponents/Cards/NumberCards";
 import MealBooking from "./Components/User/MealBooking";
 import Dashboard from "./Pages/Admin/Dashboard";
-import BarChart from "./CustomComponents/Charts/BarChart";
-import FilterableTable from "./CustomComponents/Table/FilterableTable";
 import MyMeals from "./Components/User/YouMeals";
 import AdminNav from "./Components/Admin/Navbar";
 import ClientNav from "./Components/User/NavBar";
 import { useEffect, useState } from "react";
-import UserTab from "./Components/Admin/ManageTabs/UserTable";
 import AllMeals from "./Pages/Admin/AllMeals";
 import BookSnacks from "./Pages/Users/SnacksBooking";
-
+import PostBookingTab from "./Pages/Admin/PostBooking";
 function App() {
   const [usrType, setUserType] = useState("user");
+
+  var navbar = document.getElementsByClassName("navbar-collapse");
+  var navbarName = document.getElementsByClassName("nav-link");
+
+  navbarName.onclick = function () {
+    navbar.style.display = "none";
+  };
 
   let location = useLocation();
 
@@ -119,6 +122,15 @@ function App() {
           element={
             <RequireAuth userType={usrType}>
               <Errorpage />
+            </RequireAuth>
+          }
+        />
+
+        <Route
+          path="/admin/post-booking"
+          element={
+            <RequireAuth userType={usrType}>
+              <PostBookingTab />
             </RequireAuth>
           }
         />

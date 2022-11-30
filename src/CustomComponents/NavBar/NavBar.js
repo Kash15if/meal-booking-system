@@ -19,7 +19,7 @@ const NavBar = ({ menu }) => {
   const activeStyle = {
     color: "white",
     textDecoration: "none",
-    margin: "2rem",
+    margin: "1rem",
   };
 
   const normalStyle = {
@@ -61,7 +61,7 @@ const NavBar = ({ menu }) => {
   );
 
   return (
-    <nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-success px-3 py-1">
+    <nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-success px-3 py-1 ">
       <button
         className="navbar-toggler"
         type="button"
@@ -73,7 +73,15 @@ const NavBar = ({ menu }) => {
       >
         <span className="navbar-toggler-icon"></span>
       </button>
-      <div className="collapse navbar-collapse py-2" id="navbarText">
+      <div
+        className="collapse navbar-collapse py-2"
+        id="navbarText"
+        data-toggle="collapse"
+        data-target="#navbarText"
+        aria-controls="navbarText"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
         <ul className="navbar-nav me-auto">
           {menu.map((item, index) => (
             <li className={"nav-item " + index === 0 ? "active" : ""}>
@@ -96,5 +104,11 @@ const NavBar = ({ menu }) => {
     </nav>
   );
 };
+// var navbar = document.getElementsByClassName("navbar-collapse");
+// var navbarName = document.getElementsByClassName("nav-link");
+
+// navbarName.onclick = function () {
+//   navbar.style.display = "none";
+// };
 
 export default NavBar;

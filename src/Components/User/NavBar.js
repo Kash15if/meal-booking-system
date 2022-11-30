@@ -3,6 +3,7 @@ import NavBar from "../../CustomComponents/NavBar/NavBar";
 
 const ClientNav = () => {
   const [menu, setMenu] = useState([
+    { compRoute: "/user/dashboard", compLabel: localStorage.getItem("name") },
     { compRoute: "/user/dashboard", compLabel: "Dashboard" },
     { compRoute: "/user/bookmeal", compLabel: "Lunch" },
     { compRoute: "/user/booksnacks", compLabel: "Snacks" },

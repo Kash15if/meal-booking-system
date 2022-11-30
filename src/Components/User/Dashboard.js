@@ -41,23 +41,50 @@ const Dashboard = () => {
           ...item,
           Date: new Date(item.Date).toISOString().split("T")[0],
         }));
-        console.log(allData);
+
+        //getting data for meals status( todays and tomm)
+        let today_Tom_MealStatus = allData[3];
+
         let cardDataTemp = [
           {
-            label: "Total Meal",
+            label: "Today's Lunch",
+            value:
+              today_Tom_MealStatus.length > 0 &&
+              today_Tom_MealStatus[0].todays_meal > 0
+                ? "ON"
+                : "OFF",
+          },
+          {
+            label: "Tommorrow's Lunch",
+            value:
+              today_Tom_MealStatus.length > 0 &&
+              today_Tom_MealStatus[0].tomm_Meal > 0
+                ? "ON"
+                : "OFF",
+          },
+          {
+            label: "My Meals",
+            value: cardDataArray[0].My_Meals,
+          },
+          {
+            label: "My Snacks",
+            value: cardDataArray[0].My_Snacks,
+          },
+          {
+            label: "Average Meal Cost",
+            value: cardDataArray[0].Lunch_Cost,
+          },
+          {
+            label: "Average Snacks Cost",
+            value: cardDataArray[0].ES_Cost,
+          },
+          {
+            label: "Total Meals Served",
             value: cardDataArray[0].Total_Meal,
           },
           {
-            label: "Total Expense",
-            value: cardDataArray[0].All_Expense,
-          },
-          {
-            label: "Cost/Meal",
-            value: cardDataArray[0].Meal_Cost,
-          },
-          {
-            label: "My Meals this month",
-            value: cardDataArray[0].MyMeals,
+            label: "Total Snacks Served",
+            value: cardDataArray[0].Total_Snacks,
           },
         ];
 
@@ -66,9 +93,13 @@ const Dashboard = () => {
 
         setTomMeal(tom_TabData_temp);
 
-        let dailyMealsLabelTemp = barDataTemp.map(
-          (row) => new Date(row.Date).toISOString().split("T")[0]
-        );
+        let dailyMealsLabelTemp = [
+          ...new Set(
+            barDataTemp.map(
+              (row) => new Date(row.Date).toISOString().split("T")[0]
+            )
+          ),
+        ];
         let dailyMealsDataTemp = barDataTemp;
 
         console.log(barDataTemp);
@@ -92,7 +123,7 @@ const Dashboard = () => {
 
   return (
     <div className="Dashboard">
-      <div className="container my-5">
+      <div className="container my-3">
         <div className="row p-2">
           {cardData &&
             cardData.map((cardItem) => (
@@ -106,7 +137,7 @@ const Dashboard = () => {
       {/* Card End */}
 
       {/* Barchart This month  Data */}
-      <div className="my-5">
+      <div className="my-4">
         {" "}
         {dailyMealsLabel && barData && (
           <BarChart data={barData} labels={dailyMealsLabel} />
@@ -116,12 +147,12 @@ const Dashboard = () => {
       {/* BarCharts end */}
 
       {/* Todays Meal -> Filterable table */}
-      <div className="my-5">
+      <div className="my-4">
         {tomMeal && (
           <FilterableTable
             tabData={tomMeal}
-            header={["Date", "Time", "Menu", "Meal_On", "Extra_Meal"]}
-            filterableColumn={["Meal_On", "Date"]}
+            header={["Date", "Time", "Extra_Meal"]}
+            filterableColumn={["Date"]}
             tableHeading="My Meals this month"
           />
         )}

@@ -86,7 +86,7 @@ const DadhboarComp = () => {
           },
           {
             label: "Lunch(this month)",
-            value: cardDataArray[0].Tom_Lunch,
+            value: cardDataArray[0].Total_Meal,
           },
           {
             label: "Cost/Lunch",
@@ -123,7 +123,9 @@ const DadhboarComp = () => {
 
         setTomMeal(tom_TabData_temp);
 
-        let dailyMealsLabelTemp = barDataTemp.map((row) => row.Date);
+        let dailyMealsLabelTemp = [
+          ...new Set(barDataTemp.map((row) => row.Date)),
+        ];
         let dailyMealsDataTemp = barDataTemp;
 
         setUserList(allData[4]);
@@ -146,8 +148,9 @@ const DadhboarComp = () => {
 
   const summaryExcelDownload = async () => {
     const endPoint = process.env.REACT_APP_BASE_URL_ADMIN + "getsummary";
-    console.log(endPoint);
-    let month = 9;
+
+    const d = new Date();
+    let month = d.getMonth();
 
     try {
       const res = await axios({
@@ -159,10 +162,11 @@ const DadhboarComp = () => {
           "Access-Control-Allow-Origin": "*",
           "x-access-token": "Bearer " + localStorage.getItem("token"),
         },
+        data: { month: month + 1 },
       });
 
       // //for creating download link
-      FileDownload(res.data, `MealSummary_Month-${month}.xlsx`);
+      FileDownload(res.data, `MealSummary_Month-${month + 1}.xlsx`);
       console.log(res);
     } catch (err) {
       console.log(err);
@@ -245,8 +249,8 @@ const DadhboarComp = () => {
         {tomMeal && (
           <FilterableTable
             tabData={tomMeal}
-            header={["Date", "UserId", "Time", "Menu", "Meal_On", "Extra_Meal"]}
-            filterableColumn={["Date", "UserId", "Meal_On"]}
+            header={["Date", "Name", "UserId", "Time", "Meal_On", "Extra_Meal"]}
+            filterableColumn={["UserId"]}
           />
         )}
       </div>

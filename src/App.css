@@ -5,3 +5,70 @@
     min-height: 100vh;
   }
 }
+
+@media screen and (max-width: 960px) {
+  .valueCount {
+    margin: 6px 6px !important;
+    padding: 0px 8px !important;
+    font-size: 16px !important;
+    color: green;
+    border: 1px solid green !important;
+    border-radius: 5px !important;
+  }
+  .cartCounter {
+    text-align: center;
+    font-size: 18px !important;
+    color: rgb(75, 165, 249);
+  }
+  td,
+  th {
+    padding: 5px !important;
+    text-align: center !important;
+  }
+  th {
+    font-size: 1rem;
+  }
+  .slider:before {
+    height: 14px !important;
+    width: 14px !important;
+  }
+  .switch {
+    width: 40px !important;
+    height: 22px !important;
+  }
+  h4 {
+    font-size: 1rem !important;
+    margin-bottom: 0px !important;
+  }
+  .cardForDetOuter {
+    padding: 0.5rem !important;
+  }
+  .cardForDets {
+    border-left: 3px solid white !important;
+    height: 30px !important;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+  }
+  .TableHeader {
+    font-size: 1.2rem !important;
+    text-transform: uppercase;
+    margin-bottom: 1rem !important;
+    margin-top: 0.5rem !important;
+  }
+  .jumbotron {
+    background-color: white !important;
+    padding-top: 1.2rem !important;
+  }
+  .p-3 {
+    padding: 0.5rem !important;
+  }
+}
+
+.nav-link {
+  white-space: nowrap !important;
+}
+
+.redNumCard {
+  background-color: rgb(248, 42, 76) !important;
+}

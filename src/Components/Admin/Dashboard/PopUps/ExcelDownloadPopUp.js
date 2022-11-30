@@ -31,7 +31,8 @@ const ExcelDownload = ({ tabData, close }) => {
     const endPoint = process.env.REACT_APP_BASE_URL_ADMIN + "getemp-excel";
 
     try {
-      let month = 9;
+      const d = new Date();
+      let month = d.getMonth();
 
       const res = await axios({
         method: "POST",
@@ -42,7 +43,7 @@ const ExcelDownload = ({ tabData, close }) => {
           "Access-Control-Allow-Origin": "*",
           "x-access-token": "Bearer " + localStorage.getItem("token"),
         },
-        data: { uid: 81, name: label, month: month },
+        data: { uid: id, name: label, month: month + 1 },
       });
 
       // //for creating download link

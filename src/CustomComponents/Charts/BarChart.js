@@ -52,6 +52,7 @@ const BarChart = (props) => {
     labels: props.labels,
     datasets: [
       {
+        axis: "y",
         label: "Lunch",
         data: props.data
           .filter((itemRow) => itemRow.Time === "Lunch")

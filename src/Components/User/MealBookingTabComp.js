@@ -30,11 +30,22 @@ const MealTabRows = ({ index, row, handleToggleChange }) => {
     setExtra(!extra);
   };
 
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
   return (
     <tr key={index}>
       <td>{row.Date}</td>
+      <td>{days[new Date(row.Date).getDay()]}</td>
       <td>{row.Time}</td>
-      <td>{row.Menu}</td>
+      {/* <td>{row.Menu}</td> */}
       <td>
         <div className="switchBtn">
           <label className="switch">

@@ -35,15 +35,24 @@ const CreateMenu = ({ formData, setFormData, handleFormSubmit }) => {
       <div>
         {" "}
         <label className="form-label">Time</label>
-        <input
-          type="text"
-          className="form-control"
+        <select
           id="time"
-          aria-describedby="emailHelp"
+          className="form-select"
+          aria-label="Default select example"
           value={formData.Time}
           name="Time"
           onChange={handleInput}
-        />
+        >
+          <option value="" selected={formData.Time === ""}>
+            Select Time
+          </option>
+          <option value="Lunch" selected={formData.Time === "Lunch"}>
+            Lunch
+          </option>
+          <option value="ES" selected={formData.Time === "ES"}>
+            Evening Snacks
+          </option>
+        </select>
       </div>
 
       <div className="mb-3">

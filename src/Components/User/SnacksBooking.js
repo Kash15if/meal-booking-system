@@ -96,12 +96,15 @@ const EveningSnacks = () => {
           setAlert={setAlert}
         />
       )}
-      <h4 style={{ textAlign: "center", margin: "2rem 0 4rem 0" }}>
+      <h4
+        className="TableHeader"
+        style={{ textAlign: "center", margin: "2rem 0 4rem 0" }}
+      >
         My Next 7 days booking
       </h4>
       <div className="container" style={{ overflowX: "scroll" }}>
         {mealStatus && (
-          <table style={{ width: "70%", margin: "auto" }}>
+          <table style={{ width: "97%", margin: "auto" }}>
             <tr>
               <th>Date</th>
               <th>Time</th>

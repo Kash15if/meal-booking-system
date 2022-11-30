@@ -36,20 +36,32 @@ const ExpenseForm = ({ formData, setFormData, handleFormSubmit }) => {
           value={formData.date}
           name="date"
           onChange={handleInput}
+          disabled={formData.time !== ""}
         />
       </div>
 
       <div className="mb-3">
         <label className="form-label">Time</label>
-        <input
-          type="text"
-          className="form-control"
+
+        <select
           id="time"
-          aria-describedby="emailHelp"
+          className="form-select"
+          aria-label="Default select example"
           value={formData.time}
           name="time"
           onChange={handleInput}
-        />
+          disabled={formData.time !== ""}
+        >
+          <option value="" selected={formData.time === ""}>
+            Select Time
+          </option>
+          <option value="Lunch" selected={formData.time === "Lunch"}>
+            Lunch
+          </option>
+          <option value="ES" selected={formData.time === "ES"}>
+            Evening Snacks
+          </option>
+        </select>
       </div>
 
       <div className="mb-3">
@@ -62,6 +74,7 @@ const ExpenseForm = ({ formData, setFormData, handleFormSubmit }) => {
           value={formData.expense}
           name="expense"
           onChange={handleInput}
+	  min={0}
         />
       </div>
 

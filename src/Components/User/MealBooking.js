@@ -116,16 +116,20 @@ const MealBooking = () => {
         />
       )}
 
-      <h4 style={{ textAlign: "center", margin: "2rem 0 4rem 0" }}>
+      <h4
+        className="TableHeader"
+        style={{ textAlign: "center", margin: "1rem 0 4rem 0" }}
+      >
         My Next 7 days booking
       </h4>
       <div className="container" style={{ overflowX: "scroll" }}>
         {mealStatus && (
-          <table style={{ width: "70%", margin: "auto" }}>
+          <table style={{ width: "97%", margin: "auto" }}>
             <tr>
               <th>Date</th>
+              <th>Day</th>
               <th>Time</th>
-              <th>Menu</th>
+              {/* <th>Menu</th> */}
               <th>ON/OFF</th>
               <th>Additional Meals</th>
             </tr>

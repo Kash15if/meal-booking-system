@@ -59,15 +59,27 @@ const UserForm = ({ formData, setFormData, handleFormSubmit }) => {
 
       <div className="mb-3">
         <label className="form-label">Department</label>
-        <input
-          type="text"
-          className="form-control"
+        <select
           id="dept"
-          aria-describedby="emailHelp"
+          className="form-select"
+          aria-label="Default select example"
           value={formData.dept}
           name="dept"
           onChange={handleInput}
-        />
+        >
+          <option value="" selected={formData.Time === ""}>
+            Select Department
+          </option>
+          <option value="Software" selected={formData.Time === "Software"}>
+            Software
+          </option>
+          <option value="Automation" selected={formData.Time === "Automation"}>
+            Automation
+          </option>
+          <option value="Factory" selected={formData.Time === "Factory"}>
+            Factory
+          </option>
+        </select>
       </div>
 
       <div className="text-center">

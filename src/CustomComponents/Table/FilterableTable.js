@@ -68,7 +68,7 @@ const TableWithFilter = ({
           <tbody>
             {data.map((oneRow, index) => (
               <tr key={index}>
-                <td>{index}</td>
+                <td>{index + 1}</td>
                 {header.map((item) => (
                   <td key={index + item}>{oneRow[item]}</td>
                 ))}
