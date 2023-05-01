@@ -1,3 +1,13 @@
+built a meal booking system for a hostel mess, using Node.js, React.js, and MS SQL database. It efficiently manages the data of over 400 students, simplifies cost calculations, and provides users with a dashboard to analyze their expenditure. The system automatically emails bills to each student and provides an option for employees to download their data in Excel format.
+
+The system is highly versatile and can be used in any small mess, hostel, or office. It has customizable features and a user-friendly interface to meet the specific requirements of any organization. The system provides advanced features to help users optimize their spending and save time, making it an essential tool for both students and hostel staff.
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
