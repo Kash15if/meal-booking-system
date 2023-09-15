@@ -9,7 +9,7 @@ const AdminNav = () => {
     { compRoute: "/admin/users", compLabel: "Manage Users" },
     { compRoute: "/admin/menus", compLabel: "Manage Menu" },
     { compRoute: "/admin/allmeals", compLabel: "AllMeals" },
-    { compRoute: "/admin/post-booking", compLabel: "Report" },
+    { compRoute: "/admin/post-booking", compLabel: "Post Booking" },
   ]);
 
   return <NavBar menu={menu} />;

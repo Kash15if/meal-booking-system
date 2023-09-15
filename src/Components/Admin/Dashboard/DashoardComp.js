@@ -13,6 +13,7 @@ import Popup from "reactjs-popup";
 
 import MailSend from "./PopUps/MailSender";
 import ExcelDownloadPopUp from "./PopUps/ExcelDownloadPopUp";
+import SummaryDownloadPopup from "./PopUps/SummaryDownloadPopup";
 
 import { useNavigate } from "react-router-dom";
 import { logOutFun } from "..//../../Services/AuthServices";
@@ -61,16 +62,28 @@ const DadhboarComp = () => {
           ...item,
           Date: new Date(item.Date).toISOString().split("T")[0],
         }));
-        console.log(allData);
-        console.log(barDataTemp);
+        // console.log(cardDataArray[0], cardDataArray[0]);
+        // console.log(barDataTemp);
         let cardDataTemp = [
+          // {
+          //   label: "Tommorrow Lunch",
+          //   value: cardDataArray[0].Tom_Lunch,
+          // },
           {
-            label: "Tommorrow Lunch",
-            value: cardDataArray[0].Tom_Lunch,
+            label: "Tommorrow Lunch (Rice/Roti)",
+            value: `${cardDataArray[0].Tom_Lunch} (${
+              cardDataArray[0].Tom_Lunch - cardDataArray[0].TOM_Roti
+            } / ${cardDataArray[0].TOM_Roti})`,
           },
+          // {
+          //   label: "Todays Lunch",
+          //   value: cardDataArray[0].Today_Lunch,
+          // },
           {
-            label: "Todays Lunch",
-            value: cardDataArray[0].Today_Lunch,
+            label: "Todays Lunch (Rice/Roti)",
+            value: `${cardDataArray[0].Today_Lunch} (${
+              cardDataArray[0].Today_Lunch - cardDataArray[0].TODAY_Roti
+            } / ${cardDataArray[0].TODAY_Roti})`,
           },
           {
             label: "Todays Snacks",
@@ -146,33 +159,33 @@ const DadhboarComp = () => {
     }
   };
 
-  const summaryExcelDownload = async () => {
-    const endPoint = process.env.REACT_APP_BASE_URL_ADMIN + "getsummary";
+  // const summaryExcelDownload = async () => {
+  //   const endPoint = process.env.REACT_APP_BASE_URL_ADMIN + "getsummary";
 
-    const d = new Date();
-    let month = d.getMonth();
+  //   const d = new Date();
+  //   let month = d.getMonth();
 
-    try {
-      const res = await axios({
-        method: "POST",
-        url: endPoint,
-        responseType: "blob",
-        headers: {
-          "Content-Type": "application/json;charset=UTF-8",
-          "Access-Control-Allow-Origin": "*",
-          "x-access-token": "Bearer " + localStorage.getItem("token"),
-        },
-        data: { month: month + 1 },
-      });
+  //   try {
+  //     const res = await axios({
+  //       method: "POST",
+  //       url: endPoint,
+  //       responseType: "blob",
+  //       headers: {
+  //         "Content-Type": "application/json;charset=UTF-8",
+  //         "Access-Control-Allow-Origin": "*",
+  //         "x-access-token": "Bearer " + localStorage.getItem("token"),
+  //       },
+  //       data: { month: month + 1 },
+  //     });
 
-      // //for creating download link
-      FileDownload(res.data, `MealSummary_Month-${month + 1}.xlsx`);
-      console.log(res);
-    } catch (err) {
-      console.log(err);
-      // logOut();
-    }
-  };
+  //     // //for creating download link
+  //     FileDownload(res.data, `MealSummary_Month-${month + 1}.xlsx`);
+  //     console.log(res);
+  //   } catch (err) {
+  //     console.log(err);
+  //     // logOut();
+  //   }
+  // };
 
   return (
     <div className="Dashboard">
@@ -193,19 +206,36 @@ const DadhboarComp = () => {
 
       <div class="container my-5">
         <div class="row p-2">
-          <div class="col-lg-4 col-sm-12  ">
+          {/* <div class="col-lg-4 col-sm-12  ">
             <button
-              class="btn btn-success downloadBtn"
+              class="btn btn-downloads downloadBtn"
               onClick={summaryExcelDownload}
             >
               Download Expense Summary
             </button>
+          </div> */}
+
+          <div class="col-lg-4 col-sm-12">
+            <Popup
+              trigger={
+                <button class="btn btn-downloads downloadBtn">
+                  Download Expense Summary
+                </button>
+              }
+              position="right center"
+              modal
+              contentStyle={contentStyle}
+            >
+              {(close) => <SummaryDownloadPopup close={close} />}
+            </Popup>
           </div>
 
           <div class="col-lg-4 col-sm-12  ">
             <Popup
               trigger={
-                <button class="btn btn-success downloadBtn">Send Bills</button>
+                <button class="btn btn-downloads downloadBtn">
+                  Send Bills
+                </button>
               }
               position="right center"
               modal
@@ -218,7 +248,7 @@ const DadhboarComp = () => {
           <div class="col-lg-4 col-sm-12  ">
             <Popup
               trigger={
-                <button class="btn btn-success downloadBtn">
+                <button class="btn btn-downloads downloadBtn">
                   Download Emp. Data
                 </button>
               }
@@ -249,7 +279,15 @@ const DadhboarComp = () => {
         {tomMeal && (
           <FilterableTable
             tabData={tomMeal}
-            header={["Date", "Name", "UserId", "Time", "Meal_On", "Extra_Meal"]}
+            header={[
+              "Date",
+              "Name",
+              "UserId",
+              "Time",
+              "Meal_On",
+              "Extra_Meal",
+              "roti",
+            ]}
             filterableColumn={["UserId"]}
           />
         )}

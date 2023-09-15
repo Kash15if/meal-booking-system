@@ -56,7 +56,7 @@ const CreateMenu = ({ formData, setFormData, handleFormSubmit }) => {
   return (
     <div
       className="col-md-4 col-sm-12 container p-5 border rounded-3 text-left my-5"
-      style={{ backgroundColor: "#D6F4DE" }}
+      style={{ backgroundColor: "#1e1e1e" }}
     >
       <div className="mb-3">
         <label className="form-label">Date</label>
@@ -144,7 +144,10 @@ const CreateMenu = ({ formData, setFormData, handleFormSubmit }) => {
       </div>
 
       <div className="text-center">
-        <button onClick={() => handleFormSubmit()} className="btn btn-success">
+        <button
+          onClick={() => handleFormSubmit()}
+          className="btn btn-outline-success mt-3"
+        >
           Submit
         </button>
       </div>

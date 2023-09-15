@@ -8,6 +8,8 @@ import "./MailSender.css";
 const MailSend = ({ tabData, close }) => {
   const [data, setData] = useState();
 
+  const [selectedAllOn, setSelectedAllOn] = useState(false);
+
   const [filterString, setFilterString] = useState("");
 
   useEffect(() => {
@@ -37,6 +39,15 @@ const MailSend = ({ tabData, close }) => {
     );
 
     setData(tempData);
+  };
+
+  const selectAllCB = (val, i) => {
+    let tempData = tabData.map((item, index) =>
+      val ? { ...item, selected: 0 } : { ...item, selected: 1 }
+    );
+
+    setData(tempData);
+    setSelectedAllOn(!val);
   };
 
   const filterChange = (e) => {
@@ -98,7 +109,18 @@ const MailSend = ({ tabData, close }) => {
                 value={filterString}
               />
             </div>
-
+            <div className="name-checkbox" key={100000}>
+              <input
+                className="checkBox"
+                type="checkbox"
+                id={100000}
+                name="vehicle1"
+                checked={selectedAllOn}
+                onChange={() => selectAllCB(selectedAllOn, 100000)}
+              />
+              <label htmlFor={100000}> Select All...</label>
+              <br />
+            </div>
             {data &&
               data.map((item, index) => {
                 return (

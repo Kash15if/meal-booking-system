@@ -148,7 +148,7 @@ const MenuTab = () => {
       {tabHeader && tabData ? (
         <div
           style={{
-            backgroundColor: "#D6F4DE",
+            backgroundColor: "#1e1e1e",
             padding: "1rem",
           }}
         >
