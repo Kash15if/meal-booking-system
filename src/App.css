@@ -1,8 +1,38 @@
+.App {
+  background-color: #121212;
+  min-height: 100vh;
+  color: #bb86fc;
+}
+
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
+  border-color: #ddf1f130 !important;
+  border-style: solid;
+  border-width: 0;
+}
+
+td,
+th {
+  color: #bb86fc;
+}
+
+table {
+  margin-top: 20px;
+}
+
+.btn-outline-success {
+  background-color: #121212 !important;
+  color: #bb86fc !important;
+  border-color: #bb86fc !important;
+}
+
 @media only screen and (min-width: 600px) {
   .App {
     padding: 2rem 5rem;
-    background-color: rgba(25, 135, 84, 0.2);
-    min-height: 100vh;
   }
 }
 
@@ -57,7 +87,7 @@
     margin-top: 0.5rem !important;
   }
   .jumbotron {
-    background-color: white !important;
+    background-color: #1e1e1e !important;
     padding-top: 1.2rem !important;
   }
   .p-3 {
@@ -70,5 +100,16 @@
 }
 
 .redNumCard {
-  background-color: rgb(248, 42, 76) !important;
+  background-color: #7a0839e7 !important;
+  /* color: white !important; */
+}
+
+.navbar {
+  background-color: #2d363a; /* Use your desired shade of purple */
+}
+
+.form-control,
+.form-select {
+  background-color: #2d363a !important;
+  color: #f5d2f8 !important;
 }

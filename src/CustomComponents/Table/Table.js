@@ -38,7 +38,7 @@ const BSTable = ({ data, header, handleEditRow, deleteRow }) => {
   return (
     <div
       style={{
-        backgroundColor: "#D6F4DE",
+        backgroundColor: "#1e1e1e",
         borderRadius: "0.5rem",
         minWidth: "100%",
         overflow: "auto",
@@ -48,7 +48,7 @@ const BSTable = ({ data, header, handleEditRow, deleteRow }) => {
       <div className="col-md-4 col-lg-3 col-sm-12 offset-md-8 offset-lg-9 my-3">
         <input
           type="text"
-          className="form-control"
+          className="form-control black-bg"
           id="filter-text"
           placeholder="Search"
           aria-describedby="Filter-text"
@@ -58,7 +58,7 @@ const BSTable = ({ data, header, handleEditRow, deleteRow }) => {
         />
       </div>
 
-      <Table bordered rounded-10 hover>
+      <Table bordered rounded-10>
         <thead>
           <tr>
             <th>#</th>

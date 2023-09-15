@@ -54,14 +54,14 @@ const NavBar = ({ menu }) => {
     )
   ) : (
     <span className="navbar-text">
-      <button className="btn btn-danger" onClick={handleLogOut}>
+      <button className="btn btn-outline-danger" onClick={handleLogOut}>
         Log Out
       </button>
     </span>
   );
 
   return (
-    <nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-success px-3 py-1 ">
+    <nav className="navbar sticky-top navbar-expand-lg navbar-dark  px-3 py-1 ">
       <button
         className="navbar-toggler"
         type="button"

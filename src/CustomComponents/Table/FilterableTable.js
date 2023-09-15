@@ -32,15 +32,16 @@ const TableWithFilter = ({
     <div
       className="p-3"
       style={{
-        backgroundColor: "#D6F4DE",
+        backgroundColor: "#1e1e1e",
         borderRadius: "0.5rem",
         minWidth: "100%",
         overflow: "auto",
-        height: "75vh",
+        minHeight: "75vh",
+        color: "white",
       }}
     >
       <h4 style={{ textAlign: "center", marginTop: "2rem" }}>{tableHeading}</h4>
-      <div className="row my-3">
+      <div className="row mt-3">
         <div className="col-md-4 col-lg-3 col-sm-12 offset-md-8 offset-lg-9">
           <input
             type="text"
@@ -56,7 +57,7 @@ const TableWithFilter = ({
       </div>
 
       {tabData && data && (
-        <Table bordered hover>
+        <Table bordered>
           <thead>
             <tr>
               <th>#</th>

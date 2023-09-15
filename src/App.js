@@ -46,7 +46,7 @@ function App() {
     let routeArray = location.pathname.split("/");
 
     let tmpUser = routeArray[1] || "user";
-    console.log(tmpUser);
+    // console.log(tmpUser);
     setUserType(tmpUser);
   }, [location]);
 
