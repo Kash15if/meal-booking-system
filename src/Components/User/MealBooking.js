@@ -40,6 +40,12 @@ const MealBooking = () => {
 
       let allData = res.data;
 
+      console.log(
+        allData.map((item) => ({
+          ...item,
+          Date: new Date(item.Date).toISOString().split("T")[0],
+        }))
+      );
       setMealStatus(
         allData.map((item) => ({
           ...item,
@@ -131,6 +137,7 @@ const MealBooking = () => {
               <th>Time</th>
               {/* <th>Menu</th> */}
               <th>ON/OFF</th>
+              <th>Roti</th>
               <th>Additional Meals</th>
             </tr>
             {mealStatus.map((row, index) => (
@@ -143,7 +150,10 @@ const MealBooking = () => {
           </table>
         )}
         <div className="saveBtn">
-          <button className="btn btn-success" onClick={handleSubmitMeals}>
+          <button
+            className="btn btn-outline-success"
+            onClick={handleSubmitMeals}
+          >
             Save Data
           </button>
         </div>

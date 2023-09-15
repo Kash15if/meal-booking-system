@@ -102,7 +102,7 @@ const Dashboard = () => {
         ];
         let dailyMealsDataTemp = barDataTemp;
 
-        console.log(barDataTemp);
+        // console.log(barDataTemp);
 
         setDailyMealsLabel(dailyMealsLabelTemp);
         setBarData(dailyMealsDataTemp);

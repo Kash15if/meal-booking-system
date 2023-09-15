@@ -4,6 +4,8 @@ import "./MealBooking.css";
 import CartCounter from "../../CustomComponents/Cards/CartCounters";
 
 const MealTabRows = ({ index, row, handleToggleChange }) => {
+
+  // console.log(row)
   const [mealOn, setMealOn] = useState(row.Meal_On === 0 ? false : true);
 
   const [extra, setExtra] = useState(row.Extra_Meal === 0 ? false : true);
@@ -11,7 +13,19 @@ const MealTabRows = ({ index, row, handleToggleChange }) => {
   const handleMealOnChange = (e) => {
     const { name, checked } = e.target;
 
-    const tempObj = { ...row, [name]: checked ? 1 : 0 };
+
+
+    let tempObj = { ...row, [name]: checked ? 1 : 0 };
+
+    if(name === "roti" && checked){
+      tempObj = { ...tempObj, Meal_On: 1};
+    }
+
+    if(name === "Meal_On" && !checked){
+      tempObj = { ...tempObj, roti: 0};
+    }
+
+
     // console.log(tempObj);
     handleToggleChange(tempObj, index);
     // setMealOn(!mealOn);
@@ -40,6 +54,7 @@ const MealTabRows = ({ index, row, handleToggleChange }) => {
     "Saturday",
   ];
 
+
   return (
     <tr key={index}>
       <td>{row.Date}</td>
@@ -53,6 +68,19 @@ const MealTabRows = ({ index, row, handleToggleChange }) => {
               name="Meal_On"
               type="checkbox"
               checked={row.Meal_On === 1 ? true : false}
+              onChange={(e) => handleMealOnChange(e)}
+            />
+            <span className="slider round"></span>
+          </label>
+        </div>
+      </td>
+      <td>
+        <div className="switchBtn">
+          <label className="switch">
+            <input
+              name="roti"
+              type="checkbox"
+              checked={row.roti === 1 ? true : false}
               onChange={(e) => handleMealOnChange(e)}
             />
             <span className="slider round"></span>

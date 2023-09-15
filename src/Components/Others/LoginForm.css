@@ -1,11 +1,11 @@
 .boxLogin {
   width: 100%;
   height: auto;
-  border: 3px solid #198754;
+  border: 3px solid #9933ff;
   margin-top: 5vh;
   border-radius: 10px;
   /* background-color: #002b7a; */
-  background-color: #198754;
+  background-color: #9933ff !important;
   color: aliceblue;
   text-align: left;
 }

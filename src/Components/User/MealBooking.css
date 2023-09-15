@@ -47,11 +47,11 @@ th {
 }
 
 input:checked + .slider {
-  background-color: #2196f3;
+  background-color: #b366ff;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
+  box-shadow: 0 0 1px #b366ff;
 }
 
 input:checked + .slider:before {
@@ -75,7 +75,7 @@ input:checked + .slider:before {
 }
 
 .jumbotron {
-  background-color: #d6f4de;
+  background-color: #1e1e1e;
 }
 
 .extraMeal > input[type="text"] {

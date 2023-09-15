@@ -121,7 +121,10 @@ const EveningSnacks = () => {
           </table>
         )}
         <div className="saveBtn">
-          <button className="btn btn-success" onClick={handleSubmitMeals}>
+          <button
+            className="btn btn-outline-success"
+            onClick={handleSubmitMeals}
+          >
             Save Data
           </button>
         </div>
