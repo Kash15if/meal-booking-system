@@ -35,7 +35,7 @@ const LoginForm = ({
         <img src={LogoImg} alt="" class="profileLogo" />
 
         <div className="form-group fgLogin">
-          <label for="email">Office Id:</label>
+          <label for="email">User Id:</label>
           <input
             type="text"
             className="form-control"

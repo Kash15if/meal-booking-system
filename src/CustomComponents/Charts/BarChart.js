@@ -69,7 +69,7 @@ const BarChart = (props) => {
     ],
   };
 
-  console.log(data);
+  // console.log(data);
   return <Bar options={options} data={data} />;
 };
 

@@ -1,5 +1,5 @@
 const LineChart = () => {
-    return (  );
+    return ( <div>Line chart</div> );
 }
  
 export default LineChart;
