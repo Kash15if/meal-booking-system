@@ -1,80 +1,48 @@
-### built a meal booking system for a hostel mess, using Node.js, React.js, and MS SQL database. It efficiently manages the data of over 400 students, simplifies cost calculations, and provides users with a dashboard to analyze their expenditure. The system automatically emails bills to each student and provides an option for employees to download their data in Excel format.
+# Meal Booking System
 
-### The system is highly versatile and can be used in any small mess, hostel, or office. It has customizable features and a user-friendly interface to meet the specific requirements of any organization. The system provides advanced features to help users optimize their spending and save time, making it an essential tool for both students and hostel staff.
+Welcome to the Meal Booking System repository! This system is designed to efficiently manage meal bookings for a hostel mess, catering to the needs of over 400 students. Built with Node.js, React.js, and an MS SQL database, it simplifies cost calculations, provides users with a dashboard for expenditure analysis, and automates the process of emailing bills to each student. The system offers versatility, making it suitable for any small mess, hostel, or office. Its customizable features and user-friendly interface can adapt to the specific requirements of any organization.
 
+## Features
 
+- **User-friendly Interface:** The system is equipped with a user-friendly interface that ensures ease of use for both students and hostel staff.
+- **Real-time Tracking:** Users can book meals and get real-time tracking of their expenses through an intuitive dashboard.
+- **Advanced Analytics:** The system provides advanced features for users to optimize spending and save time on meal planning.
+- **Automated Billing:** Bills are automatically emailed to each student, streamlining the billing process.
+- **Excel Data Download:** Employees have the option to download their data in Excel format, enhancing data accessibility.
 
+## Parts of the System
 
+### 1. User
 
+- **Meal Booking:** Users can easily book meals and track their expenses in real-time.
+- **Dashboard:** Provides a user-friendly dashboard for expenditure analysis.
 
+### 2. Admin
 
-# Getting Started with Create React App
+- **Meal Management:** Admins can efficiently manage meals, users, and costs.
+- **Customizable Features:** The system allows customization to meet specific organizational requirements.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Video Demo
 
-## Available Scripts
+[Watch the Video Demo](https://my-projects-rose.vercel.app/#mbs)
 
-In the project directory, you can run:
+## Live Hosted Demo
 
-### `npm start`
+[Visit the Live Hosted Demo](https://meal-booking-system.vercel.app/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Future Plans
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+We plan to Dockerize the application to make it easier for non-technical users to run and deploy. This will provide a containerized environment, ensuring that the application runs consistently across different systems.
 
-### `npm test`
+Stay tuned for future updates on Dockerization!
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Contribution
 
-### `npm run build`
+Feel free to contribute, discuss, and generate pull requests to enhance the Meal Booking System. Your input is valuable in making this system even more effective and user-friendly.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Contact
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Email:** kashif.ahmad.se@gmail.com
+- **LinkedIn:** [Kashif Ahmad](https://www.linkedin.com/in/kash15if)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thank you for exploring the Meal Booking System repository. We look forward to your contributions!
