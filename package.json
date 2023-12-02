@@ -6,7 +6,7 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
-    "axios": "^0.27.2",
+    "axios": "^1.6.2",
     "bootstrap": "^5.2.0",
     "bootstrap-icons": "^1.9.1",
     "chart.js": "^3.9.0",
@@ -17,7 +17,7 @@
     "react-chartjs-2": "^4.3.1",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^3.0.1",
     "reactjs-popup": "^2.0.5",
     "web-vitals": "^2.1.4"
   },
@@ -44,5 +44,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "Welcome to the Meal Booking System repository! This system is designed to efficiently manage meal bookings for a hostel mess, catering to the needs of over 400 students. Built with Node.js, React.js, and an MS SQL database, it simplifies cost calculations, provides users with a dashboard for expenditure analysis, and automates the process of emailing bills to each student. The system offers versatility, making it suitable for any small mess, hostel, or office. Its customizable features and user-friendly interface can adapt to the specific requirements of any organization.",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }
